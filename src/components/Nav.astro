@@ -1,0 +1,64 @@
+---
+import HarbingerLogo1 from "../assets/harbinger-logo-1.svg";
+import CtaPrimary from "./CtaPrimary.astro";
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+  <HarbingerLogo1
+    style={{
+      width: 150,
+      height: 60,
+    }}
+  />
+  <ul>
+    <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+    <li><a href="#" class={currentPath === '/classes' ? 'active' : ''}>Classes</a></li>
+    <li><a href="#" class={currentPath === '/coaching' ? 'active' : ''}>Coaches</a></li>
+    <li><a href="#" class={currentPath === '/pricing' ? 'active' : ''}>Pricing</a></li>
+    <li><a href="#" class={currentPath === '/schedule' ? 'active' : ''}>Schedule</a></li>
+    <li><a href="#" class={currentPath === '/shop' ? 'active' : ''}>Shop</a></li>
+  </ul>
+  <CtaPrimary url="#">Join Now</CtaPrimary>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    padding: 16px 24px;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #000c 0%, transparent 100%);
+  }
+
+  nav a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.4px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  nav ul li a {
+    color: var(--neutral-1);
+  }
+
+  .cta {
+    padding: 8px 24px;
+    background-color: var(--brand-primary);
+    height: fit-content;
+    backdrop-filter: blur(4px);
+  }
+
+  nav ul li a.active {
+    color: var(--brand-primary);
+    border-bottom: 2px solid var(--brand-primary);
+  }
+</style>
