@@ -1,1 +1,44 @@
-[]
+[
+    {
+        "title":"Muay Thai",
+        "description":"",
+        "excerpt":"",
+        "featuredImagePath":"",
+        "classPageImagePath":""
+    },
+    {
+        "title":"Brazilian Jiu-Jitsu",
+        "description":"",
+        "excerpt":"",
+        "featuredImagePath":"",
+        "classPageImagePath":""
+    },
+    {
+        "title":"Boxing",
+        "description":"",
+        "excerpt":"",
+        "featuredImagePath":"",
+        "classPageImagePath":""
+    },
+    {
+        "title":"Wrestling",
+        "description":"",
+        "excerpt":"",
+        "featuredImagePath":"",
+        "classPageImagePath":""
+    },
+    {
+        "title":"Judo",
+        "description":"",
+        "excerpt":"",
+        "featuredImagePath":"",
+        "classPageImagePath":""
+    },
+    {
+        "title":"Conditioning",
+        "description":"",
+        "excerpt":"",
+        "featuredImagePath":"",
+        "classPageImagePath":""
+    }
+]

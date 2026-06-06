@@ -6,7 +6,7 @@ const classTypes = defineCollection({
     loader: file('./src/data/classTypes.json'),
     schema: z.object({
         name: z.string(),
-        iconPath: z.string().startsWith('/'),
+        iconPath: z.string().startsWith('./'),
     }),
 })
 
@@ -16,8 +16,8 @@ const classes = defineCollection({
         title: z.string(),
         description: z.string(),
         excerpt: z.string(),
-        featuredImagePath: z.string().startsWith('/'),
-        classPageImagePath: z.string().startsWith('/')
+        featuredImagePath: z.string(),
+        classPageImagePath: z.string()
     }),
 })
 
@@ -27,8 +27,9 @@ const coaches = defineCollection({
         name: z.string(),
         bio: z.string(),
         discipline: z.string(),
-        headshotImagePath: z.string().startsWith('/'),
-        featuredImagePath: z.string().startsWith('/'),
+        excerpt: z.string(),
+        headshotImagePath: z.string(),
+        featuredImagePath: z.string(),
 
     }),
 })
