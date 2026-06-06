@@ -17,8 +17,7 @@ const classes = defineCollection({
         description: z.string(),
         excerpt: z.string(),
         featuredImagePath: z.string().startsWith('/'),
-        classPageImagePath: z.string().startsWith('/'),
-        type: reference("classTypes"),
+        classPageImagePath: z.string().startsWith('/')
     }),
 })
 
@@ -38,8 +37,11 @@ const schedule = defineCollection({
     loader: file('./src/data/schedule.json'),
     schema: z.object({
         schema: z.object({
-            headshotImagePath: z.string().startsWith('/'),
-            featuredImagePath: z.string().startsWith('/'),
+            className: z.string(),
+            startTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
+            endTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
+            classDay: z.literal(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]),
+            type: reference("classTypes")
         }),
     })
 })
