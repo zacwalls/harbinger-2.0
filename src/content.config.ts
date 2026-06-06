@@ -40,7 +40,15 @@ const schedule = defineCollection({
             className: z.string(),
             startTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
             endTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
-            classDay: z.literal(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]),
+            classDay: z.enum([
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ]),
             type: reference("classTypes")
         }),
     })
