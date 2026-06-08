@@ -1,8 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HarbingerLogo from "../assets/harbinger-logo-complex.svg";
+import CTAPrimary from "../components/CTAPrimary.astro";
+import CTASecondary from "../components/CTAPrimary.astro";
 ---
 
-<Layout />
+<Layout>
+  <div class="hero">
+    <div class="title">
+      <HarbingerLogo />
+      <h2 class="hero-heading">Portland's Premier Combat Training Facility</h2>
+      <h1 class="hero-subheading-1">Forge the fighter in you</h1>
+      <div class="hero-subtitle-container">
+        <p>Here to win<span>.</span></p>
+        <span class="divider"></span>
+        <p>Elite martial arts instruction for those who demand excellence. From Day 1 beginners to professional fighters.</p>
+      </div>
+      <div class="cta-container">
+        <CTAPrimary url="/#contact">claim trial</CTAPrimary>
+        <CTASecondary url="/schedule">view schedule</CTASecondary>
+      </div>
+    </div>
+  </div>
+</Layout>
 
 <style is:global>
   @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300..700&display=swap");
