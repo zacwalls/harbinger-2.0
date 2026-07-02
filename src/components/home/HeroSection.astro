@@ -1,0 +1,53 @@
+---
+import CTAPrimary from "../../components/CTAPrimary.astro";
+import CTASecondary from "../../components/CTASecondary.astro";
+---
+
+<section class="relative flex items-center justify-center min-h-[800px] overflow-hidden">
+  <div class="absolute inset-0 overflow-hidden">
+    <img
+      alt=""
+      class="absolute w-full h-[160%] top-[-35%] left-0 object-cover max-w-none"
+      src="/src/assets/e13810a8da0873151bdc6176b483894b70422ca5.png"
+    />
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/[0.63] via-[rgba(80,80,80,0.63)] to-black/[0.63]">
+  </div>
+  <div class="relative z-10 flex flex-col items-center max-w-[1280px] w-full px-6 py-16 gap-8 text-center">
+    <div class="w-[160px]">
+      <img
+        alt="Harbinger Sword Logo"
+        class="w-full h-auto"
+        src="/src/assets/harbinger-logo-complex.svg"
+      />
+    </div>
+    <p
+      class="font-bold text-[#e9c349] tracking-[5.6px] uppercase text-[14px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]"
+    >
+      Portland's Premier Combat Training Facility
+    </p>
+    <h1
+      class="font-bold text-white uppercase text-[96px] tracking-[-7.2px] leading-[1.275] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)]"
+    >
+      forge the fighter in you
+    </h1>
+    <div class="flex items-center gap-8 mt-2">
+      <div
+        class="font-bold text-[#e5e2e1] text-[60px] tracking-[-3px] uppercase leading-[60px] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)]"
+      >
+        HERE TO WIN<span class="font-bold text-[#2e86c1]">.</span>
+      </div>
+      <div class="w-[2px] h-[48px] bg-[rgba(46,134,193,0.6)]"></div>
+      <p
+        class="font-normal text-[#c0c7d1] text-[18px] max-w-[428px] text-left leading-[28px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]"
+      >
+        Elite martial arts instruction for those who demand excellence. From Day
+        1 beginners to professional fighters.
+      </p>
+    </div>
+    <div class="flex gap-6 mt-16">
+      <CTAPrimary url="#claim-trial">CLAIM TRIAL</CTAPrimary>
+      <CTASecondary url="/schedule">VIEW SCHEDULE</CTASecondary>
+    </div>
+  </div>
+</section>
