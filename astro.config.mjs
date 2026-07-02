@@ -5,7 +5,11 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+    output: "static",
+    image: {
+      domains: ['localhost', '://onrender.com'],
+    },
     vite: {
-    plugins: [tailwindcss()],
-  },
+      plugins: [tailwindcss()],
+    },
 });

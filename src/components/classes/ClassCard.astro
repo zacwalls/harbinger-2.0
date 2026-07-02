@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import { getStrapiMedia } from '../../lib/strapi';
+const { name, excerpt, thumbnail } = Astro.props;
+---
+
+<a href={`/classes/${name.toLowerCase()}`} class="relative rounded-[12px] overflow-hidden border border-white/10">
+  <div class="absolute inset-px overflow-hidden">
+    <Image
+      alt={name}
+      class="absolute w-full h-full object-cover"
+      width={450}
+      height={450}
+      src={getStrapiMedia(thumbnail)}
+      format="webp"
+      quality="high"
+    />
+  </div>
+  <div class="absolute inset-px bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+  <div class="absolute inset-0 flex flex-col justify-end p-[33px]">
+    <div class="relative h-[174px]">
+      <div class="absolute top-[42px]">
+        <h3 class="font-bold text-white text-[30px] uppercase leading-[36px]">{name}</h3>
+      </div>
+      <div class="absolute top-[86px] overflow-hidden">
+        <p class="text-[#c0c7d1] text-[14px] leading-[20px] line-clamp-2 overflow-ellipsis">
+          {excerpt}
+        </p>
+      </div>
+      <div class="absolute top-[148px] flex items-center gap-2 cursor-pointer">
+        <span class="text-white text-[14px] tracking-[1.4px] uppercase">Explore Discipline</span>
+        <span class="scale-y-[-1]">
+          <svg width="24" height="24" viewBox="0 0 24.02 28" fill="none"><path d="M16.069 13.0278H4.23222V14.9722H16.069L10.6246 20.4167L12.01 21.7778L19.7878 14L12.01 6.22222L10.6246 7.58333L16.069 13.0278Z" fill="white"></path></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</a>
