@@ -41,6 +41,18 @@
     "Description": {
       "type": "text",
       "required": true
+    },
+    "Types": {
+      "type": "customField",
+      "customField": "plugin::multi-select.multi-select",
+      "default": "[]",
+      "options": [
+        "Striking",
+        "Grappling",
+        "Conditioning",
+        "MMA"
+      ],
+      "required": true
     }
   }
 }
