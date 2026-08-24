@@ -1,21 +1,17 @@
 ---
-import fetchApi from "../../lib/strapi";
-import type Coach from "../../interfaces/coach";
+import { getCollection } from "astro:content";
 import CoachCard from "../coaches/CoachCard.astro";
 
-const coaches = await fetchApi<Coach[]>({
-  endpoint: "coaches?populate=Headshot",
-  wrappedByKey: "data",
-});
+const coaches = (await getCollection('coaches').then((coaches) => coaches.slice(0, 3)));
 ---
 
 <div class="flex gap-8 justify-center">
     {coaches.map((coach) => (
         <CoachCard
-            name={coach.Name}
-            title={coach.Title}
-            excerpt={coach.Excerpt}
-            thumbnail={coach.Headshot.url}
+            name={coach.data.name}
+            title={coach.data.title}
+            excerpt={coach.data.excerpt}
+            thumbnail={coach.data.featuredImagePath}
         />
     ))}
 </div>

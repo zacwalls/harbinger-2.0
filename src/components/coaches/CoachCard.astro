@@ -1,20 +1,21 @@
 ---
 import { Image } from 'astro:assets';
-import { getStrapiMedia } from '../../lib/strapi';
 const { name, title, excerpt, thumbnail } = Astro.props;
+
+console.log('thumbnail', thumbnail);
 ---
 
 <a href={`/coaches/${name.toLowerCase()}`} class="relative rounded-[12px] overflow-hidden border border-white/10 flex-shrink-0 w-[389px] h-[327px]">
     <div class="absolute inset-0 overflow-hidden">
-        <Image
-            alt={name}
-            class="absolute inset-0 w-full h-full object-fill"
-            width={389}
-            height={327}
-            src={getStrapiMedia(thumbnail)}
-            format="webp"
-            quality="high"
-        />
+        {thumbnail && (
+            <Image
+                alt={name}
+                class="absolute inset-0 w-full h-full object-fill"
+                width={389}
+                height={327}
+                src={thumbnail}
+            />
+        )}
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
         <div class="absolute inset-px flex flex-col justify-end p-8">
             <p class="font-bold text-[#e9c349] text-[12px] tracking-[1.2px] uppercase leading-[16px] mb-1">{title}</p>

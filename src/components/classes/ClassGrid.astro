@@ -1,20 +1,16 @@
 ---
-import fetchApi from "../../lib/strapi";
-import type Class from "../../interfaces/class";
+import { getCollection } from 'astro:content';
 import ClassCard from "../classes/ClassCard.astro";
 
-const classes = await fetchApi<Class[]>({
-  endpoint: "classes?populate=Thumbnail",
-  wrappedByKey: "data",
-});
+const classes = (await getCollection('classes').then((classes) => classes.slice(0, 7)));
 ---
 
 <div class="grid grid-cols-3 gap-6" style="grid-template-rows: 450px 450px;">
     {classes.map((classItem) => (
         <ClassCard
-            name={classItem.Name}
-            excerpt={classItem.Excerpt}
-            thumbnail={classItem.Thumbnail[0].url}
+            name={classItem.data.title}
+            excerpt={classItem.data.excerpt}
+            thumbnail={classItem.data.featuredImagePath}
         />
     ))}
     </div>

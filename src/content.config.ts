@@ -1,46 +1,55 @@
 import { defineCollection, reference } from 'astro:content'
-import { file } from 'astro/loaders'
+import { glob, file } from 'astro/loaders'
 import { z } from 'astro/zod'
 
 const classTypes = defineCollection({
-    loader: file('./src/data/classTypes.json'),
+    loader: file('./src/data/classTypes.json', { parser: (text) => JSON.parse(text) }),
     schema: z.object({
         name: z.string(),
-        iconPath: z.string().startsWith('./'),
+        iconPath: z.string(),
     }),
 })
 
 const classes = defineCollection({
-    loader: file('./src/data/classes.json'),
-    schema: z.object({
+    loader: glob({
+        pattern: "**/*.json",
+        base: "./src/data/classes",
+        generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+    }),
+    schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
         excerpt: z.string(),
-        featuredImagePath: z.string(),
-        classPageImagePath: z.string()
+        featuredImagePath: image(),
+        // classPageImagePath: image()
     }),
 })
 
 const coaches = defineCollection({
-    loader: file('./src/data/coaches.json'),
-    schema: z.object({
+    loader: glob({
+        pattern: "**/*.json",
+        base: "./src/data/coaches",
+        generateId: ({ entry }) => entry.replace(/\.json$/, ""),
+    }),
+    schema: ({ image }) => z.object({
         name: z.string(),
+        title: z.string(),
         bio: z.string(),
         discipline: z.string(),
         excerpt: z.string(),
-        headshotImagePath: z.string(),
-        featuredImagePath: z.string(),
+        // headshotImagePath: image(),
+        featuredImagePath: image(),
 
     }),
 })
 
 const schedule = defineCollection({
-    loader: file('./src/data/schedule.json'),
+    loader: file('./src/data/schedule.json', { parser: (text) => JSON.parse(text) }),
     schema: z.object({
         schema: z.object({
             className: z.string(),
-            startTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
-            endTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
+            startTime: z.coerce.date(),
+            endTime: z.coerce.date(),
             classDay: z.enum([
                 "Monday",
                 "Tuesday",
@@ -55,4 +64,4 @@ const schedule = defineCollection({
     })
 })
 
-export const collections = { classTypes, classes, coaches, schedule }
+export const collections = { classTypes, classes, coaches }
