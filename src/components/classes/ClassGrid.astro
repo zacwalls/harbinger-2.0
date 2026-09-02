@@ -5,7 +5,7 @@ import ClassCard from "../classes/ClassCard.astro";
 const classes = (await getCollection('classes').then((classes) => classes.slice(0, 7)));
 ---
 
-<div class="grid grid-cols-3 gap-6" style="grid-template-rows: 450px 450px;">
+<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6" style="grid-template-rows: 450px 450px;">
     {classes.map((classItem) => (
         <ClassCard
             name={classItem.data.title}

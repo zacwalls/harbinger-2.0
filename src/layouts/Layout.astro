@@ -3,10 +3,10 @@ import Nav from "../components/Nav.astro"
 ---
 
 <!doctype html>
-<html lang="en" class="w-full ">
+<html lang="en" class="w-screen">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
@@ -14,9 +14,8 @@ import Nav from "../components/Nav.astro"
 	</head>
 	<body>
 		<Nav />
-		<div class="bg-[#0e0e0e] font-['Space Grotesk',sans-serif]">
+		<div class="bg-[#0e0e0e] font-['Space Grotesk',sans-serif] overflow-clip">
 			<slot />
 		</div>
 	</body>
 </html>
-
