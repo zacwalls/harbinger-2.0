@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 const { name, excerpt, thumbnail } = Astro.props;
 ---
 
-<a href={`/classes/${name.toLowerCase()}`} class="relative rounded-[12px] overflow-hidden border border-white/10">
+<a href={`/classes/${name.toLowerCase()}`} class="relative rounded-[12px] overflow-hidden border border-white/10 min-h-[450px]">
   <div class="absolute inset-px overflow-hidden">
     {thumbnail && (
       <Image
