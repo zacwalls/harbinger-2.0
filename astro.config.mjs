@@ -9,7 +9,7 @@ export default defineConfig({
     output: "static",
     base: isProd ? "/harbinger-2.0/" : "/",
     image: {
-      domains: ['localhost', '://onrender.com', 'zacwalls.github.io/harbinger-2.0/'],
+      domains: ['localhost', '://onrender.com'],
     },
     vite: {
       plugins: [tailwindcss()],
