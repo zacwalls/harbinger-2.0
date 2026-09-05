@@ -7,7 +7,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
     output: "static",
     image: {
-      domains: ['localhost', '://onrender.com'],
+      domains: ['localhost', '://onrender.com', 'zacwalls.github.io/harbinger-2.0/'],
     },
     vite: {
       plugins: [tailwindcss()],
