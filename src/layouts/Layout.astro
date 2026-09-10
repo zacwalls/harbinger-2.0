@@ -1,5 +1,6 @@
 ---
 import Nav from "../components/Nav.astro"
+import Footer from "../components/Footer.astro"
 ---
 
 <!doctype html>
@@ -16,6 +17,19 @@ import Nav from "../components/Nav.astro"
 		<Nav />
 		<div class="bg-[#0e0e0e] font-['Space Grotesk',sans-serif] overflow-clip">
 			<slot />
+			<Footer />
 		</div>
 	</body>
 </html>
+
+<style is:global>
+  @import "tailwindcss";
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+  @theme {
+    --font-display: "Space Grotesk", sans-serif;
+    --default-font-family: "Space Grotesk", sans-serif;
+    --color-neutral-1: #c0c7d1;
+    --color-brand-primary: #2e86c1;
+    --color-brand-secondary: #e9c349;
+  }
+</style>
