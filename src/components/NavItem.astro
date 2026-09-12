@@ -1,4 +1,6 @@
 ---
+import Link from "../components/Link.astro";
+
 interface Props {
   pageName: string;
   url: string;
@@ -8,7 +10,7 @@ interface Props {
 const { pageName, url, currentPath } = Astro.props;
 ---
 <li class="pb-[2px] list-none">
-  <a href={url} class={`[word-break:break-word] pb-2 font-bold justify-center leading-[0] relative shrink-0 text-[16px] tracking-[-0.4px] uppercase whitespace-nowrap leading-[24px] ${currentPath === url ? "text-[#2e86c1] border-b-2 border-bottom-[#2e86c1]" : "text-[#c0c7d1]"}`}>
+  <Link href={url} class={`[word-break:break-word] pb-2 font-bold justify-center leading-[0] relative shrink-0 text-[16px] tracking-[-0.4px] uppercase whitespace-nowrap leading-[24px] ${currentPath === url ? "text-[#2e86c1] border-b-2 border-bottom-[#2e86c1]" : "text-[#c0c7d1]"}`}>
     {pageName}
-  </a>
+  </Link>
 </li>
