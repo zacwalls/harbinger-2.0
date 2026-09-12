@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import CTAForm from "../../components/CTAForm.astro";
+
+export async function getStaticPaths() {
+	const coaches = await getCollection("coaches");
+
+	return coaches.map((coach) => ({
+		params: { slug: coach.data.name.toLowerCase() },
+		props: { coach },
+	}));
+}
+
+const { coach } = Astro.props;
+const { name, excerpt, bio, title, headshotImagePath } = coach.data;
+---
+
+<Layout>
+	<section
+		class="relative flex items-end justify-left min-h-[600px] overflow-hidden">
+		<div class="absolute inset-0 overflow-hidden">
+			<img
+				alt=""
+				class="absolute w-[120%] top-25 left-[-13%] grayscale aspect-[1.198] max-w-none opacity-80"
+				src={headshotImagePath?.src!}
+			/>
+		</div>
+		<div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.63)_10.1%,rgba(80,80,80,0.63)_46.15%,rgba(0,0,0,0.63)_87.02%),linear-gradient(0deg,#131313_0%,rgba(19,19,19,0.4)_50%,rgba(19,19,19,0)_100%)]"></div>
+		<div
+			class="relative z-10 flex flex-col max-w-[700px] w-full px-6 py-15 max-md:mx-auto max-md:w-fit">
+			<p
+				class="font-bold text-[#e9c349] tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]">
+				{title}
+			</p>
+			<h1
+				class="font-bold text-white uppercase text-[96px] max-lg:text-[48px] tracking-[-7.2px] max-lg:tracking-[-3px] leading-[96px] max-lg:leading-[56px] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)] text-brand-primary">
+				{name}
+			</h1>
+			<p
+				class="mt-4 text-xl leading-[28px] tracking-0 border-l-4 border-brand-primary pl-6 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1 max-w-[550px] max-sm:text-[16px] max-sm:leading-[24px] max-sm:tracking-[-0.4px]">
+				{excerpt}
+			</p>
+		</div>
+	</section>
+	<section class="px-6 py-24">
+		<h2 class="font-bold uppercase text-white text-3xl pb-8">meet <span class="text-brand-primary">{name}</span></h2>
+		<p class="text-neutral-1 leading-loose text-lg">{bio}</p>
+	</section>
+	<CTAForm />
+</Layout>

@@ -1,11 +1,12 @@
 ---
 import { Image } from 'astro:assets';
+import Link from '../../components/Link.astro';
 const { name, title, excerpt, thumbnail } = Astro.props;
 
 console.log('thumbnail', thumbnail);
 ---
 
-<a href={`/coaches/${name.toLowerCase()}`} class="relative rounded-[12px] overflow-hidden border border-white/10 flex-shrink-0 w-[389px] h-[327px]">
+<Link href={`coaches/${name.toLowerCase()}`} className="relative rounded-[12px] overflow-hidden border border-white/10 flex-shrink-0 w-[389px] h-[327px]">
     <div class="absolute inset-0 overflow-hidden">
         {thumbnail && (
             <Image
@@ -25,4 +26,4 @@ console.log('thumbnail', thumbnail);
             </div>
         </div>
     </div>
-</a>
+</Link>

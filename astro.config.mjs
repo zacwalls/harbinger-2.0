@@ -2,13 +2,13 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 
-const isProd = process.env.NODE_ENV === 'production';
+const isStaging = process.env.NODE_ENV === 'staging';
 
 // https://astro.build/config
 export default defineConfig({
     output: "static",
-    site: isProd ? "https://harbingermma.com" : "https://zacwalls.github.io/",
-    base: isProd ? "/" : "/harbinger-2.0",
+    site: isStaging ? "https://zacwalls.github.io/" : "https://harbingermma.com",
+    base: isStaging ? "/harbinger-2.0" : "/",
     image: {
       domains: ['localhost', '://onrender.com'],
     },

@@ -37,7 +37,7 @@ const coaches = defineCollection({
         bio: z.string(),
         discipline: z.string(),
         excerpt: z.string(),
-        // headshotImagePath: image(),
+        headshotImagePath: image().optional(),
         featuredImagePath: image(),
 
     }),
