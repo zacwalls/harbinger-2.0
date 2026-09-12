@@ -1,6 +1,7 @@
 ---
 import NavLogo from "../assets/NavLogo.svg";
 import NavItem from "../components/NavItem.astro";
+import Link from "../components/Link.astro";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -12,12 +13,12 @@ const currentPath = Astro.url.pathname;
     data-name="Top Navigation Bar"
   >
     <!-- Logo -->
-    <a
+    <Link
       href="/"
       aria-label="Go to home page"
     >
       <NavLogo class="w-[150px] h-[50px]" />
-    </a>
+    </Link>
 
     <!-- Desktop navigation -->
     <div class="hidden items-center gap-6 lg:flex xl:gap-8">
@@ -59,12 +60,12 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <!-- Desktop CTA -->
-    <a
+    <Link
       href="/join"
       class="hidden min-h-10 items-center justify-center bg-[#2e86c1] px-6 py-2 font-['Space_Grotesk',sans-serif] text-base font-bold tracking-[-0.4px] text-white uppercase transition-colors hover:bg-[#2474a8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:flex"
     >
       Join Now
-    </a>
+    </Link>
 
     <!-- Mobile menu button -->
     <button
@@ -160,12 +161,12 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
 
-    <a
-      href="/join"
-      class="mt-5 flex min-h-12 w-full items-center justify-center bg-[#2e86c1] px-6 py-3 font-['Space_Grotesk',sans-serif] text-base font-bold tracking-[-0.4px] text-white uppercase transition-colors hover:bg-[#2474a8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    <Link
+      href="join"
+      className="mt-5 flex min-h-12 w-full items-center justify-center bg-[#2e86c1] px-6 py-3 text-base font-bold tracking-[-0.4px] text-white uppercase transition-colors hover:bg-[#2474a8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
     >
       Join Now
-    </a>
+    </Link>
   </div>
 </nav>
 

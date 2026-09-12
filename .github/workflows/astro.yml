@@ -36,7 +36,7 @@ jobs:
       - name: Build site
         run: bun run build
         env:
-          NODE_ENV: staging
+          NODE_ENV: 'staging'
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
