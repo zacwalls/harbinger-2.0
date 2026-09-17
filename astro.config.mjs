@@ -10,9 +10,7 @@ export default defineConfig({
   output: "static",
   site: isStaging ? "https://zacwalls.github.io/" : "https://harbingermma.com",
   base: isStaging ? "/harbinger-2.0/" : "/",
-  redirects: {
-    "/home": "/",
-  },
+
   image: {
     domains: ['localhost', '://onrender.com'],
   },

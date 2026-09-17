@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
   >
     <!-- Logo -->
     <Link
-      href="home"
+      href="/"
       aria-label="Go to home page"
     >
       <NavLogo class="w-[150px] h-[50px]" />
@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname;
     <!-- Desktop navigation -->
     <div class="hidden items-center gap-6 lg:flex xl:gap-8">
       <NavItem
-        url="home"
+        url="/"
         pageName="Home"
         currentPath={currentPath}
       />
