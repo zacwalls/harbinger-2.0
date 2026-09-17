@@ -6,6 +6,7 @@
             "striking"
         ],
         "endTime": "05:00 PM",
+        "id": "0",
         "startTime": "06:00 PM"
     },
     {
@@ -15,6 +16,7 @@
             "striking"
         ],
         "endTime": "06:30 PM",
+        "id": "1",
         "startTime": "05:30 PM"
     },
     {
@@ -24,6 +26,7 @@
             "striking"
         ],
         "endTime": "05:30 PM",
+        "id": "2",
         "startTime": "04:30 PM"
     },
     {
@@ -33,6 +36,7 @@
             "grappling"
         ],
         "endTime": "06:00 PM",
+        "id": "3",
         "startTime": "04:30 PM"
     },
     {
@@ -42,6 +46,7 @@
             "grappling"
         ],
         "endTime": "08:00 AM",
+        "id": "4",
         "startTime": "06:30 AM"
     },
     {
@@ -51,6 +56,7 @@
             "grappling"
         ],
         "endTime": "08:00 AM",
+        "id": "5",
         "startTime": "06:30 AM"
     },
     {
@@ -60,6 +66,7 @@
             "grappling"
         ],
         "endTime": "06:00 PM",
+        "id": "6",
         "startTime": "04:30 PM"
     },
     {
@@ -69,6 +76,7 @@
             "grappling"
         ],
         "endTime": "06:00 PM",
+        "id": "7",
         "startTime": "04:30 PM"
     },
     {
@@ -78,6 +86,7 @@
             "grappling"
         ],
         "endTime": "09:30 AM",
+        "id": "8",
         "startTime": "08:30 AM"
     },
     {
@@ -87,6 +96,7 @@
             "grappling"
         ],
         "endTime": "04:30 PM",
+        "id": "9",
         "startTime": "03:30 PM"
     },
     {
@@ -96,6 +106,7 @@
             "grappling"
         ],
         "endTime": "10:30 AM",
+        "id": "10",
         "startTime": "08:30 AM"
     },
     {
@@ -105,6 +116,7 @@
             "conditioning"
         ],
         "endTime": "04:30 PM",
+        "id": "11",
         "startTime": "03:30 PM"
     },
     {
@@ -114,6 +126,7 @@
             "conditioning"
         ],
         "endTime": "05:30 PM",
+        "id": "12",
         "startTime": "04:30 PM"
     },
     {
@@ -123,6 +136,7 @@
             "striking"
         ],
         "endTime": "07:00 PM",
+        "id": "13",
         "startTime": "06:00 PM"
     },
     {
@@ -132,6 +146,7 @@
             "striking"
         ],
         "endTime": "08:30 AM",
+        "id": "14",
         "startTime": "07:30 AM"
     },
     {
@@ -141,6 +156,7 @@
             "striking"
         ],
         "endTime": "06:30 PM",
+        "id": "15",
         "startTime": "05:30 PM"
     },
     {
@@ -150,6 +166,7 @@
             "striking"
         ],
         "endTime": "10:30 AM",
+        "id": "16",
         "startTime": "09:30 AM"
     },
     {
@@ -159,6 +176,7 @@
             "striking"
         ],
         "endTime": "06:00 PM",
+        "id": "17",
         "startTime": "04:30 PM"
     },
     {
@@ -168,6 +186,7 @@
             "striking"
         ],
         "endTime": "07:30 PM",
+        "id": "18",
         "startTime": "06:00 PM"
     },
     {
@@ -177,6 +196,7 @@
             "striking"
         ],
         "endTime": "07:30 PM",
+        "id": "19",
         "startTime": "06:00 PM"
     },
     {
@@ -186,6 +206,7 @@
             "striking"
         ],
         "endTime": "06:00 PM",
+        "id": "20",
         "startTime": "04:30 PM"
     },
     {
@@ -196,6 +217,7 @@
             "mma"
         ],
         "endTime": "01:30 PM",
+        "id": "21",
         "startTime": "12:00 PM"
     },
     {
@@ -205,6 +227,7 @@
             "conditioning"
         ],
         "endTime": "05:30 AM",
+        "id": "22",
         "startTime": "04:30 AM"
     },
     {
@@ -214,6 +237,7 @@
             "conditioning"
         ],
         "endTime": "08:30 AM",
+        "id": "23",
         "startTime": "07:30 AM"
     },
     {
@@ -223,6 +247,7 @@
             "grappling"
         ],
         "endTime": "05:00 PM",
+        "id": "24",
         "startTime": "04:00 PM"
     },
     {
@@ -232,6 +257,7 @@
             "grappling"
         ],
         "endTime": "05:00 PM",
+        "id": "25",
         "startTime": "04:00 PM"
     },
     {
@@ -241,6 +267,7 @@
             "striking"
         ],
         "endTime": "05:30 PM",
+        "id": "26",
         "startTime": "04:30 PM"
     },
     {
@@ -250,6 +277,7 @@
             "striking"
         ],
         "endTime": "05:00 PM",
+        "id": "27",
         "startTime": "03:30 PM"
     },
     {
@@ -260,6 +288,7 @@
             "conditioning"
         ],
         "endTime": "06:30 PM",
+        "id": "28",
         "startTime": "05:30 PM"
     },
     {
@@ -269,6 +298,7 @@
             "striking"
         ],
         "endTime": "05:30 PM",
+        "id": "29",
         "startTime": "04:30 PM"
     },
     {
@@ -278,6 +308,7 @@
             "striking"
         ],
         "endTime": "06:00 PM",
+        "id": "30",
         "startTime": "04:30 PM"
     },
     {
@@ -287,6 +318,7 @@
             "mma"
         ],
         "endTime": "07:00 PM",
+        "id": "31",
         "startTime": "06:00 PM"
     },
     {
@@ -296,6 +328,7 @@
             "mma"
         ],
         "endTime": "07:00 PM",
+        "id": "32",
         "startTime": "06:00 PM"
     },
     {
@@ -305,6 +338,7 @@
             "mma"
         ],
         "endTime": "12:00 PM",
+        "id": "33",
         "startTime": "10:30 AM"
     },
     {
@@ -315,6 +349,7 @@
             "striking"
         ],
         "endTime": "04:30 PM",
+        "id": "34",
         "startTime": "03:30 PM"
     },
     {
@@ -325,6 +360,7 @@
             "mma"
         ],
         "endTime": "05:00 PM",
+        "id": "35",
         "startTime": "03:30 PM"
     },
     {
@@ -334,6 +370,7 @@
             "striking"
         ],
         "endTime": "04:30 PM",
+        "id": "36",
         "startTime": "03:30 PM"
     },
     {
@@ -343,6 +380,7 @@
             "striking"
         ],
         "endTime": "07:30 AM",
+        "id": "37",
         "startTime": "06:30 AM"
     },
     {
@@ -352,6 +390,7 @@
             "striking"
         ],
         "endTime": "07:30 AM",
+        "id": "38",
         "startTime": "06:30 AM"
     },
     {
@@ -361,6 +400,7 @@
             "striking"
         ],
         "endTime": "07:30 AM",
+        "id": "39",
         "startTime": "06:30 AM"
     },
     {
@@ -370,6 +410,7 @@
             "striking"
         ],
         "endTime": "07:30 AM",
+        "id": "40",
         "startTime": "06:30 AM"
     },
     {
@@ -379,6 +420,7 @@
             "conditioning"
         ],
         "endTime": "08:30 AM",
+        "id": "41",
         "startTime": "07:30 AM"
     },
     {
@@ -388,6 +430,7 @@
             "striking"
         ],
         "endTime": "07:30 AM",
+        "id": "42",
         "startTime": "06:30 AM"
     },
     {
@@ -397,6 +440,7 @@
             "striking"
         ],
         "endTime": "07:00 PM",
+        "id": "43",
         "startTime": "06:00 PM"
     },
     {
@@ -406,6 +450,7 @@
             "striking"
         ],
         "endTime": "07:00 AM",
+        "id": "44",
         "startTime": "06:00 AM"
     },
     {
@@ -415,6 +460,7 @@
             "striking"
         ],
         "endTime": "07:00 PM",
+        "id": "45",
         "startTime": "06:00 PM"
     },
     {
@@ -424,6 +470,7 @@
             "conditioning"
         ],
         "endTime": "07:00 PM",
+        "id": "46",
         "startTime": "05:30 PM"
     },
     {
@@ -433,6 +480,7 @@
             "conditioning"
         ],
         "endTime": "08:30 AM",
+        "id": "47",
         "startTime": "07:30 AM"
     },
     {
@@ -442,6 +490,7 @@
             "grappling"
         ],
         "endTime": "04:30 PM",
+        "id": "48",
         "startTime": "03:30 PM"
     }
 ]

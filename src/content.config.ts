@@ -36,31 +36,30 @@ const coaches = defineCollection({
 })
 
 const schedule = defineCollection({
-    loader: file('./src/data/schedule.json', { parser: (text) => JSON.parse(text) }),
+    loader: file('./src/data/schedule.json'),
     schema: z.object({
-        schema: z.object({
-            className: z.string(),
-            startTime: z.coerce.date(),
-            endTime: z.coerce.date(),
-            classDay: z.enum([
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday",
-            ]),
-            classTypes: z.array(
-                z.enum([
-                    "striking",
-                    "grappling",
-                    "conditioning",
-                    "mma"
-                ])
-            ),
-        }),
-    })
+        id: z.string(),
+        className: z.string(),
+        startTime: z.string(),
+        endTime: z.string(),
+        classDay: z.enum([
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+        ]),
+        classTypes: z.array(
+            z.enum([
+                "striking",
+                "grappling",
+                "conditioning",
+                "mma"
+            ])
+        ),
+    }),
 })
 
 export const collections = { classes, coaches, schedule }

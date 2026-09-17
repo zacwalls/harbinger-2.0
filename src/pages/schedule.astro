@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import WeeklySchedule from '../components/WeeklySchedule.tsx';
+import { getCollection } from 'astro:content';
+
+const schedule = await getCollection('schedule')
+---
+
+<Layout>
+    <WeeklySchedule client:load schedule={schedule} />
+</Layout>
