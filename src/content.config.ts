@@ -2,14 +2,6 @@ import { defineCollection, reference } from 'astro:content'
 import { glob, file } from 'astro/loaders'
 import { z } from 'astro/zod'
 
-const classTypes = defineCollection({
-    loader: file('./src/data/classTypes.json', { parser: (text) => JSON.parse(text) }),
-    schema: z.object({
-        name: z.string(),
-        iconPath: z.string(),
-    }),
-})
-
 const classes = defineCollection({
     loader: glob({
         pattern: "**/*.json",
@@ -59,9 +51,16 @@ const schedule = defineCollection({
                 "Saturday",
                 "Sunday",
             ]),
-            type: reference("classTypes")
+            classTypes: z.array(
+                z.enum([
+                    "striking",
+                    "grappling",
+                    "conditioning",
+                    "mma"
+                ])
+            ),
         }),
     })
 })
 
-export const collections = { classTypes, classes, coaches }
+export const collections = { classes, coaches, schedule }
