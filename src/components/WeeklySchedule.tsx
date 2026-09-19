@@ -52,10 +52,10 @@ export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[]
     }, [selectedFilter]);
 
     return (
-        <section className="relative flex flex-col items-center justify-center px-4 py-20">
-            <section className="flex py-16 flex-col items-center gap-4 w-full">
+        <section className="relative flex flex-col items-center justify-center">
+            <section className="flex py-32 flex-col items-center gap-4 w-full bg-[#131313]">
                 <p className="text-neutral-2 opacity-50 text-md text-bold uppercase">filter by</p>
-                <div className="flex flex-wrap justify-center items-stretch gap-4 max-w-[1280px] w-full p-0 [container-type:inline-size]">
+                <div className="flex flex-wrap justify-center items-stretch gap-4 max-w-[1280px] w-full p-0 [container-type:inline-size] bg-[#131313]">
                     {filterOptions.map((filterOption: FilterOptions) => (
                         <button
                             className="grow-0 shrink-1 basis-[clamp(7rem,20cqw,10.25rem)] py-5 flex flex-col justify-center items-center bg-[#1C1B1B]"
