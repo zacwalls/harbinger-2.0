@@ -1,496 +1,526 @@
 [
     {
-        "classDay": "Tuesday",
-        "className": "Advanced Boxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "05:00 PM",
         "id": "0",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Friday",
-        "className": "Advanced Muay Thai/Kickboxing",
+        "className": "Advanced Boxing",
+        "classDay": "Tuesday",
         "classTypes": [
             "striking"
         ],
-        "endTime": "06:30 PM",
+        "startTime": "6:00 PM",
+        "endTime": "7:00 PM"
+    },
+    {
         "id": "1",
-        "startTime": "05:30 PM"
-    },
-    {
-        "classDay": "Wednesday",
         "className": "Advanced Muay Thai/Kickboxing",
+        "classDay": "Friday",
         "classTypes": [
             "striking"
         ],
-        "endTime": "05:30 PM",
+        "startTime": "7:00 PM",
+        "endTime": "8:00 PM"
+    },
+    {
         "id": "2",
-        "startTime": "04:30 PM"
+        "className": "Advanced Muay Thai/Kickboxing",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "6:00 PM",
+        "endTime": "7:00 PM"
     },
     {
-        "classDay": "Monday",
-        "className": "BJJ",
-        "classTypes": [
-            "grappling"
-        ],
-        "endTime": "06:00 PM",
         "id": "3",
-        "startTime": "04:30 PM"
-    },
-    {
-        "classDay": "Tuesday",
         "className": "BJJ",
+        "classDay": "Monday",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "08:00 AM",
+        "startTime": "6:00 PM",
+        "endTime": "7:30 PM"
+    },
+    {
         "id": "4",
-        "startTime": "06:30 AM"
-    },
-    {
-        "classDay": "Thursday",
         "className": "BJJ",
+        "classDay": "Tuesday",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "08:00 AM",
+        "startTime": "8:00 AM",
+        "endTime": "9:30 AM"
+    },
+    {
         "id": "5",
-        "startTime": "06:30 AM"
-    },
-    {
-        "classDay": "Wednesday",
         "className": "BJJ",
+        "classDay": "Thursday",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "06:00 PM",
+        "startTime": "8:00 AM",
+        "endTime": "9:30 AM"
+    },
+    {
         "id": "6",
-        "startTime": "04:30 PM"
-    },
-    {
-        "classDay": "Friday",
-        "className": "BJJ Fundamentals",
+        "className": "BJJ",
+        "classDay": "Wednesday",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "06:00 PM",
+        "startTime": "6:00 PM",
+        "endTime": "7:30 PM"
+    },
+    {
         "id": "7",
-        "startTime": "04:30 PM"
-    },
-    {
-        "classDay": "Saturday",
         "className": "BJJ Fundamentals",
+        "classDay": "Friday",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "09:30 AM",
+        "startTime": "6:00 PM",
+        "endTime": "7:30 PM"
+    },
+    {
         "id": "8",
-        "startTime": "08:30 AM"
-    },
-    {
-        "classDay": "Wednesday",
-        "className": "BJJ Open Mat (free)",
-        "classTypes": [
-            "grappling"
-        ],
-        "endTime": "04:30 PM",
-        "id": "9",
-        "startTime": "03:30 PM"
-    },
-    {
-        "classDay": "Sunday",
-        "className": "BJJ Open Rounds",
-        "classTypes": [
-            "grappling"
-        ],
-        "endTime": "10:30 AM",
-        "id": "10",
-        "startTime": "08:30 AM"
-    },
-    {
-        "classDay": "Wednesday",
-        "className": "Bootcamp",
-        "classTypes": [
-            "conditioning"
-        ],
-        "endTime": "04:30 PM",
-        "id": "11",
-        "startTime": "03:30 PM"
-    },
-    {
-        "classDay": "Friday",
-        "className": "Bootcamp",
-        "classTypes": [
-            "conditioning"
-        ],
-        "endTime": "05:30 PM",
-        "id": "12",
-        "startTime": "04:30 PM"
-    },
-    {
-        "classDay": "Tuesday",
-        "className": "Boxing Fundamentals",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:00 PM",
-        "id": "13",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Wednesday",
-        "className": "Boxing Fundamentals",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "08:30 AM",
-        "id": "14",
-        "startTime": "07:30 AM"
-    },
-    {
-        "classDay": "Friday",
-        "className": "Boxing Fundamentals",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "06:30 PM",
-        "id": "15",
-        "startTime": "05:30 PM"
-    },
-    {
+        "className": "BJJ Fundamentals",
         "classDay": "Saturday",
-        "className": "Boxing Fundamentals",
         "classTypes": [
-            "striking"
+            "grappling"
         ],
-        "endTime": "10:30 AM",
-        "id": "16",
-        "startTime": "09:30 AM"
+        "startTime": "10:00 AM",
+        "endTime": "11:00 AM"
     },
     {
+        "id": "9",
+        "className": "BJJ Open Mat (free)",
         "classDay": "Wednesday",
-        "className": "Boxing Sparring Group 1",
         "classTypes": [
-            "striking"
+            "grappling"
         ],
-        "endTime": "06:00 PM",
-        "id": "17",
-        "startTime": "04:30 PM"
+        "startTime": "5:00 PM",
+        "endTime": "6:00 PM"
     },
     {
-        "classDay": "Wednesday",
-        "className": "Boxing Sparring Group 2",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:30 PM",
-        "id": "18",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Monday",
-        "className": "Boxing Technical Sparring",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:30 PM",
-        "id": "19",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Monday",
-        "className": "Boxing Technique",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "06:00 PM",
-        "id": "20",
-        "startTime": "04:30 PM"
-    },
-    {
+        "id": "10",
+        "className": "BJJ Open Rounds",
         "classDay": "Sunday",
-        "className": "Comp Sparring (invite only)",
-        "classTypes": [
-            "striking",
-            "mma"
-        ],
-        "endTime": "01:30 PM",
-        "id": "21",
-        "startTime": "12:00 PM"
-    },
-    {
-        "classDay": "Monday",
-        "className": "Conditioning",
-        "classTypes": [
-            "conditioning"
-        ],
-        "endTime": "05:30 AM",
-        "id": "22",
-        "startTime": "04:30 AM"
-    },
-    {
-        "classDay": "Monday",
-        "className": "Conditioning",
-        "classTypes": [
-            "conditioning"
-        ],
-        "endTime": "08:30 AM",
-        "id": "23",
-        "startTime": "07:30 AM"
-    },
-    {
-        "classDay": "Tuesday",
-        "className": "Judo/Wrestling",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "05:00 PM",
-        "id": "24",
-        "startTime": "04:00 PM"
+        "startTime": "10:00 AM",
+        "endTime": "12:00 PM"
     },
     {
-        "classDay": "Thursday",
-        "className": "Judo/Wrestling",
+        "id": "11",
+        "className": "Bootcamp",
+        "classDay": "Wednesday",
         "classTypes": [
-            "grappling"
+            "conditioning"
         ],
-        "endTime": "05:00 PM",
-        "id": "25",
-        "startTime": "04:00 PM"
+        "startTime": "5:00 PM",
+        "endTime": "6:00 PM"
     },
     {
-        "classDay": "Thursday",
-        "className": "Muay Thai/Kickboxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "05:30 PM",
-        "id": "26",
-        "startTime": "04:30 PM"
-    },
-    {
+        "id": "12",
+        "className": "Bootcamp",
         "classDay": "Friday",
-        "className": "Muay Thai/Kickboxing",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "6:00 PM",
+        "endTime": "7:00 PM"
+    },
+    {
+        "id": "13",
+        "className": "Boxing Fundamentals",
+        "classDay": "Tuesday",
         "classTypes": [
             "striking"
         ],
-        "endTime": "05:00 PM",
-        "id": "27",
-        "startTime": "03:30 PM"
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
     },
     {
+        "id": "14",
+        "className": "Boxing Fundamentals",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "9:00 AM",
+        "endTime": "10:00 AM"
+    },
+    {
+        "id": "15",
+        "className": "Boxing Fundamentals",
+        "classDay": "Friday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "7:00 PM",
+        "endTime": "8:00 PM"
+    },
+    {
+        "id": "16",
+        "className": "Boxing Fundamentals",
+        "classDay": "Saturday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "11:00 AM",
+        "endTime": "12:00 PM"
+    },
+    {
+        "id": "17",
+        "className": "Boxing Sparring Group 1",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "6:00 PM",
+        "endTime": "7:30 PM"
+    },
+    {
+        "id": "18",
+        "className": "Boxing Sparring Group 2",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "9:00 PM"
+    },
+    {
+        "id": "19",
+        "className": "Boxing Technical Sparring",
+        "classDay": "Monday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "9:00 PM"
+    },
+    {
+        "id": "20",
+        "className": "Boxing Technique",
+        "classDay": "Monday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "6:00 PM",
+        "endTime": "7:30 PM"
+    },
+    {
+        "id": "21",
+        "className": "Comp Sparring (invite only)",
+        "classDay": "Sunday",
+        "classTypes": [
+            "striking",
+            "mma"
+        ],
+        "startTime": "1:30 PM",
+        "endTime": "3:00 PM"
+    },
+    {
+        "id": "22",
+        "className": "Conditioning",
+        "classDay": "Monday",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "6:00 AM",
+        "endTime": "7:00 AM"
+    },
+    {
+        "id": "23",
+        "className": "Conditioning",
+        "classDay": "Monday",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "9:00 AM",
+        "endTime": "10:00 AM"
+    },
+    {
+        "id": "24",
+        "className": "Judo/Wrestling",
+        "classDay": "Tuesday",
+        "classTypes": [
+            "grappling"
+        ],
+        "startTime": "5:30 PM",
+        "endTime": "6:30 PM"
+    },
+    {
+        "id": "25",
+        "className": "Judo/Wrestling",
         "classDay": "Thursday",
+        "classTypes": [
+            "grappling"
+        ],
+        "startTime": "5:30 PM",
+        "endTime": "6:30 PM"
+    },
+    {
+        "id": "26",
+        "className": "Muay Thai/Kickboxing",
+        "classDay": "Thursday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "6:00 PM",
+        "endTime": "7:00 PM"
+    },
+    {
+        "id": "27",
+        "className": "Muay Thai/Kickboxing",
+        "classDay": "Friday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "5:00 PM",
+        "endTime": "6:30 PM"
+    },
+    {
+        "id": "28",
         "className": "Kickboxing Conditioning",
+        "classDay": "Thursday",
         "classTypes": [
             "striking",
             "conditioning"
         ],
-        "endTime": "06:30 PM",
-        "id": "28",
-        "startTime": "05:30 PM"
+        "startTime": "7:00 PM",
+        "endTime": "8:00 PM"
     },
     {
-        "classDay": "Monday",
-        "className": "Muay Thai/Kickboxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "05:30 PM",
         "id": "29",
-        "startTime": "04:30 PM"
-    },
-    {
-        "classDay": "Tuesday",
-        "className": "Muay Thai/Kickboxing Sparring",
+        "className": "Muay Thai/Kickboxing",
+        "classDay": "Monday",
         "classTypes": [
             "striking"
         ],
-        "endTime": "06:00 PM",
+        "startTime": "6:00 PM",
+        "endTime": "7:00 PM"
+    },
+    {
         "id": "30",
-        "startTime": "04:30 PM"
+        "className": "Muay Thai/Kickboxing Sparring",
+        "classDay": "Tuesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "6:00 PM",
+        "endTime": "7:30 PM"
     },
     {
-        "classDay": "Monday",
-        "className": "MMA",
-        "classTypes": [
-            "mma"
-        ],
-        "endTime": "07:00 PM",
         "id": "31",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Wednesday",
         "className": "MMA",
-        "classTypes": [
-            "mma"
-        ],
-        "endTime": "07:00 PM",
-        "id": "32",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Sunday",
-        "className": "MMA",
-        "classTypes": [
-            "mma"
-        ],
-        "endTime": "12:00 PM",
-        "id": "33",
-        "startTime": "10:30 AM"
-    },
-    {
         "classDay": "Monday",
+        "classTypes": [
+            "mma"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "32",
+        "className": "MMA",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "mma"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "33",
+        "className": "MMA",
+        "classDay": "Sunday",
+        "classTypes": [
+            "mma"
+        ],
+        "startTime": "12:00 PM",
+        "endTime": "1:30 PM"
+    },
+    {
+        "id": "34",
         "className": "MMA Striking",
+        "classDay": "Monday",
         "classTypes": [
             "mma",
             "striking"
         ],
-        "endTime": "04:30 PM",
-        "id": "34",
-        "startTime": "03:30 PM"
+        "startTime": "5:00 PM",
+        "endTime": "6:00 PM"
     },
     {
-        "classDay": "Thursday",
+        "id": "35",
         "className": "MMA Striking",
+        "classDay": "Thursday",
         "classTypes": [
             "striking",
             "mma"
         ],
-        "endTime": "05:00 PM",
-        "id": "35",
-        "startTime": "03:30 PM"
+        "startTime": "5:00 PM",
+        "endTime": "6:30 PM"
     },
     {
-        "classDay": "Tuesday",
-        "className": "Muay Thai/Kickboxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "04:30 PM",
         "id": "36",
-        "startTime": "03:30 PM"
-    },
-    {
-        "classDay": "Monday",
         "className": "Muay Thai/Kickboxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:30 AM",
-        "id": "37",
-        "startTime": "06:30 AM"
-    },
-    {
         "classDay": "Tuesday",
-        "className": "Muay Thai/Kickboxing",
         "classTypes": [
             "striking"
         ],
-        "endTime": "07:30 AM",
+        "startTime": "5:00 PM",
+        "endTime": "6:00 PM"
+    },
+    {
+        "id": "37",
+        "className": "Muay Thai/Kickboxing",
+        "classDay": "Monday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "8:00 AM",
+        "endTime": "9:00 AM"
+    },
+    {
         "id": "38",
-        "startTime": "06:30 AM"
-    },
-    {
-        "classDay": "Thursday",
         "className": "Muay Thai/Kickboxing",
+        "classDay": "Tuesday",
         "classTypes": [
             "striking"
         ],
-        "endTime": "07:30 AM",
+        "startTime": "8:00 AM",
+        "endTime": "9:00 AM"
+    },
+    {
         "id": "39",
-        "startTime": "06:30 AM"
-    },
-    {
-        "classDay": "Friday",
         "className": "Muay Thai/Kickboxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:30 AM",
-        "id": "40",
-        "startTime": "06:30 AM"
-    },
-    {
-        "classDay": "Friday",
-        "className": "Strength & Conditioning",
-        "classTypes": [
-            "conditioning"
-        ],
-        "endTime": "08:30 AM",
-        "id": "41",
-        "startTime": "07:30 AM"
-    },
-    {
-        "classDay": "Wednesday",
-        "className": "Muay Thai/Kickboxing",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:30 AM",
-        "id": "42",
-        "startTime": "06:30 AM"
-    },
-    {
-        "classDay": "Wednesday",
-        "className": "Muay Thai Technique",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:00 PM",
-        "id": "43",
-        "startTime": "06:00 PM"
-    },
-    {
-        "classDay": "Monday",
-        "className": "Muay Thai Technique",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:00 AM",
-        "id": "44",
-        "startTime": "06:00 AM"
-    },
-    {
-        "classDay": "Monday",
-        "className": "Muay Thai Technique",
-        "classTypes": [
-            "striking"
-        ],
-        "endTime": "07:00 PM",
-        "id": "45",
-        "startTime": "06:00 PM"
-    },
-    {
         "classDay": "Thursday",
-        "className": "Bootcamp",
         "classTypes": [
-            "conditioning"
+            "striking"
         ],
-        "endTime": "07:00 PM",
-        "id": "46",
-        "startTime": "05:30 PM"
+        "startTime": "8:00 AM",
+        "endTime": "9:00 AM"
     },
     {
-        "classDay": "Saturday",
-        "className": "Bootcamp",
-        "classTypes": [
-            "conditioning"
-        ],
-        "endTime": "08:30 AM",
-        "id": "47",
-        "startTime": "07:30 AM"
-    },
-    {
+        "id": "40",
+        "className": "Muay Thai/Kickboxing",
         "classDay": "Friday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "8:00 AM",
+        "endTime": "9:00 AM"
+    },
+    {
+        "id": "41",
+        "className": "Strength & Conditioning",
+        "classDay": "Friday",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "9:00 AM",
+        "endTime": "10:00 AM"
+    },
+    {
+        "id": "42",
+        "className": "Muay Thai/Kickboxing",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "8:00 AM",
+        "endTime": "9:00 AM"
+    },
+    {
+        "id": "43",
+        "className": "Muay Thai Technique",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "44",
+        "className": "Muay Thai Technique",
+        "classDay": "Monday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "7:30 AM",
+        "endTime": "8:30 AM"
+    },
+    {
+        "id": "45",
+        "className": "Muay Thai Technique",
+        "classDay": "Monday",
+        "classTypes": [
+            "striking"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "46",
+        "className": "Bootcamp",
+        "classDay": "Thursday",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "7:00 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "47",
+        "className": "Bootcamp",
+        "classDay": "Saturday",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "9:00 AM",
+        "endTime": "10:00 AM"
+    },
+    {
+        "id": "48",
         "className": "BJJ",
+        "classDay": "Friday",
         "classTypes": [
             "grappling"
         ],
-        "endTime": "04:30 PM",
-        "id": "48",
-        "startTime": "03:30 PM"
+        "startTime": "5:00 PM",
+        "endTime": "6:00 PM"
+    },
+    {
+        "id": "49",
+        "className": "Yoga",
+        "classDay": "Tuesday",
+        "classTypes": [
+            "yoga"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "50",
+        "className": "Yoga",
+        "classDay": "Wednesday",
+        "classTypes": [
+            "yoga"
+        ],
+        "startTime": "7:30 PM",
+        "endTime": "8:30 PM"
+    },
+    {
+        "id": "51",
+        "className": "Yoga",
+        "classDay": "Thursday",
+        "classTypes": [
+            "yoga"
+        ],
+        "startTime": "8:00 PM",
+        "endTime": "9:00 PM"
     }
 ]

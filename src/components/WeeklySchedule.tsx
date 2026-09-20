@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'preact/hooks';
+import { effect, useSignal, Signal } from '@preact/signals';
 import type { CollectionEntry } from 'astro:content';
 import type { SvgComponent } from 'astro/types';
 
@@ -11,8 +11,10 @@ import MMAIcon from '../assets/icons/mma.svg'
 type ClassSchedule = CollectionEntry<'schedule'>;
 type FilterOptionNames = typeof filterOptionNames[number]
 type FilterOptions = { name: FilterOptionNames, icon: SvgComponent & ImageMetadata }
+type Days = typeof days[number]
 
 const filterOptionNames = ['all', 'striking', 'grappling', 'conditioning', 'mma'] as const
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const
 
 const filterOptions: FilterOptions[] = [
     { name: 'all', icon: CheckmarkIcon },
@@ -33,23 +35,71 @@ const classTypeColors = {
 function ScheduleCard({ color, classItem }: { color: string, classItem: ClassSchedule['data'] }) {
     return (
         <div className="flex flex-col bg-[#1C1B1B] px-3 py-8 gap-2 box-[outline]" style={`border-left: 4px solid ${color};`}>
-            <p className="text-[10px]" style={`color: ${color};`}>{classItem.startTime} - {classItem.endTime}</p>
-            <p className="text-neutral-1 uppercase text-sm lg:text-normal tracking-[0px] leading-[17.5px]">{classItem.className}</p>
+            <p className="text-[10px] lg:text-[12px]" style={`color: ${color};`}>{classItem.startTime} - {classItem.endTime}</p>
+            <p className="text-neutral-1 uppercase text-sm lg:text-lg tracking-[0px] leading-[17.5px]">{classItem.className}</p>
         </div>
     )
 }
 
-export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[] }) {
-    const [classSchedule, setClassSchedule] = useState(schedule);
-    const [selectedFilter, setSelectedFilter] = useState("all" as FilterOptionNames);
+function ScheduleDayColumn({ day, classSchedule }: { day: Days, classSchedule: ClassSchedule[] }) {
+    const todaysSchedule = classSchedule.filter(classItem => classItem.data.classDay === day)
 
-    useEffect(() => {
-        async function fetchClasses() {
-            const filteredClasses = selectedFilter === "all" ? schedule : schedule.filter((classItem) => classItem.data.classTypes.includes(selectedFilter));
-            setClassSchedule(filteredClasses);
-        }
-        fetchClasses();
-    }, [selectedFilter]);
+    return (
+        <div className="flex flex-col gap-2 grow-1 shrink-1 basis-0" key={day}>
+            <p class="text-neutral-1 text-2xl uppercase text-bold p-4 tracking-[1px] tracking-[0px] bg-[#1C1B1B] border-b-[rgba(138, 145, 155, 0.15)] border-b-[1px]" style="border-bottom: rgba(138, 145, 155, 0.15);">{day.slice(0, 3)}</p>
+            <div className="flex flex-col gap-2 px-1">
+                {todaysSchedule.length < 1
+                    ? <p className="text-[10px] text-neutral-1 px-3 py-8 text-center tracking-[2.4px] font-bold uppercase">No classes at this time</p>
+                    : todaysSchedule.map(classItem => (
+                        <ScheduleCard
+                            color={classTypeColors[classItem.data.classTypes[0]]}
+                            classItem={classItem.data}
+                        />
+                    ))}
+            </div>
+        </div>
+    )
+}
+
+function ScheduleOptionButton({ selectedFilter, filterOption }: { selectedFilter: Signal<FilterOptionNames>, filterOption: FilterOptions }) {
+    return (
+        <button
+            className="grow-0 shrink-1 basis-[clamp(7rem,20cqw,10.25rem)] py-5 flex flex-col justify-center items-center bg-[#1C1B1B]"
+            onClick={() => { selectedFilter.value = filterOption.name }}
+            style={(filterOption.name === selectedFilter.value ? `border` : `border-bottom`) + `: 4px solid ${classTypeColors[filterOption.name]}`}
+        >
+            <img src={filterOption.icon.src} />
+            <p className="text-xs" style={`color: ` + (filterOption.name === selectedFilter.value ? `white` : `#c0c7d1; opacity: 50%;`)}>{filterOption.name.toUpperCase()}</p>
+        </button>
+    )
+}
+
+function filterSchedule(schedule: ClassSchedule[], filter: FilterOptionNames) {
+    if (filter === 'all') {
+        return schedule
+    }
+
+    return schedule.filter(classItem => classItem.data.classTypes.includes(filter))
+}
+
+function toMinutes(timeStr: string) {
+    const [time, period] = timeStr.trim().split(' ');
+    let [hours, minutes] = time.split(':').map(Number);
+
+    if (period.toUpperCase() === 'AM' && hours === 12) hours = 0;
+    if (period.toUpperCase() === 'PM' && hours !== 12) hours += 12;
+
+    return hours * 60 + minutes;
+}
+
+export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[] }) {
+    const classSchedule = useSignal(schedule);
+    const selectedFilter: Signal<FilterOptionNames> = useSignal('all')
+
+    effect(() => {
+        classSchedule.value = filterSchedule(schedule, selectedFilter.value)
+        .sort((a, b) => toMinutes(a.data.endTime) - toMinutes(b.data.endTime))
+    })
 
     return (
         <section className="relative flex flex-col items-center justify-center">
@@ -57,33 +107,14 @@ export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[]
                 <p className="text-neutral-2 opacity-50 text-md text-bold uppercase">filter by</p>
                 <div className="flex flex-wrap justify-center items-stretch gap-4 max-w-[1280px] w-full p-0 [container-type:inline-size] bg-[#131313]">
                     {filterOptions.map((filterOption: FilterOptions) => (
-                        <button
-                            className="grow-0 shrink-1 basis-[clamp(7rem,20cqw,10.25rem)] py-5 flex flex-col justify-center items-center bg-[#1C1B1B]"
-                            onClick={() => setSelectedFilter(filterOption.name)}
-                            style={(filterOption.name === selectedFilter ? `border` : `border-bottom`) + `: 4px solid ${classTypeColors[filterOption.name]}`}
-                        >
-                            <img src={filterOption.icon.src} />
-                            <p className="text-xs" style={`color: ` + (filterOption.name === selectedFilter ? `white` : `#c0c7d1; opacity: 50%;`)}>{filterOption.name.toUpperCase()}</p>
-                        </button>
+                        <ScheduleOptionButton selectedFilter={selectedFilter} filterOption={filterOption} />
                     ))}
                 </div>
             </section>
             <section className="flex flex-col justify-center gap-16 px-4 py-20 w-full">
-                <h1 className="text-neutral-1 bg-color-black uppercase font-bold text-3xl text-center">Current Weekly Schedule</h1>
+                <h1 className="text-neutral-1 bg-color-black uppercase font-bold text-4xl text-center">Current Weekly Schedule</h1>
                 <div className="flex flex-col lg:flex-row gap-15 p-2 lg:gap-0 bg-[#131313]">
-                    {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
-                        <div className="flex flex-col gap-2 grow-1 shrink-1 basis-0" key={day}>
-                            <p class="text-neutral-1 text-2xl lg:text-lg uppercase text-bold p-4 tracking-[1px] tracking-[0px] bg-[#1C1B1B] border-b-[rgba(138, 145, 155, 0.15)] border-b-[1px]" style="border-bottom: rgba(138, 145, 155, 0.15);">{day.slice(0,3)}</p>
-                            <div className="flex flex-col gap-2 px-1">
-                                {classSchedule.filter(classItem => classItem.data.classDay === day).map(classItem => (
-                                    <ScheduleCard
-                                        color={classTypeColors[classItem.data.classTypes[0]]}
-                                        classItem={classItem.data}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    ))}
+                    {days.map(day => <ScheduleDayColumn day={day} classSchedule={classSchedule.value} />)}
                 </div>
             </section>
         </section>
