@@ -69,9 +69,9 @@ function ScheduleFilterButton({ selectedFilter, filterOption }: { selectedFilter
         <button
             className="grow-0 shrink-1 basis-[clamp(7rem,20cqw,10.25rem)] py-5 flex flex-col justify-center items-center bg-[#1C1B1B]"
             onClick={() => { selectedFilter.value = filterOption.name }}
-            style={(filterOption.name === selectedFilter.value ? `border` : `border-bottom`) + `: 4px solid ${classTypeColors[filterOption.name]}`}
+            style={`border-bottom: 4px solid ${classTypeColors[filterOption.name] + (filterOption.name === selectedFilter.value ? `; box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.8);` : `80`)}`}
         >
-            <img className="lg:w-[28px] lg:h-[28px]" src={filterOption.icon.src} />
+            <img className="lg:w-[28px] lg:h-[28px]" src={filterOption.icon.src} style={`opacity: ` + (filterOption.name === selectedFilter.value ? `100%;` : `50%`)} />
             <p className="lg:text-normal text-xs" style={`color: ` + (filterOption.name === selectedFilter.value ? `white` : `#c0c7d1; opacity: 50%;`)}>{filterOption.name.toUpperCase()}</p>
         </button>
     )
