@@ -7,13 +7,14 @@ import StrikingIcon from '../assets/icons/striking.svg'
 import GrapplingIcon from '../assets/icons/grappling.svg'
 import ConditioningIcon from '../assets/icons/dumbell.svg'
 import MMAIcon from '../assets/icons/mma.svg'
+import Yoga from '../assets/icons/yoga.svg'
 
 type ClassSchedule = CollectionEntry<'schedule'>;
 type FilterOptionNames = typeof filterOptionNames[number]
 type FilterOptions = { name: FilterOptionNames, icon: SvgComponent & ImageMetadata }
 type Days = typeof days[number]
 
-const filterOptionNames = ['all', 'striking', 'grappling', 'conditioning', 'mma'] as const
+const filterOptionNames = ['all', 'striking', 'grappling', 'conditioning', 'mma', 'yoga'] as const
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const
 
 const filterOptions: FilterOptions[] = [
@@ -22,6 +23,7 @@ const filterOptions: FilterOptions[] = [
     { name: 'grappling', icon: GrapplingIcon },
     { name: 'conditioning', icon: ConditioningIcon },
     { name: 'mma', icon: MMAIcon },
+    { name: 'yoga', icon: Yoga }
 ]
 
 const classTypeColors = {
@@ -29,7 +31,8 @@ const classTypeColors = {
     'striking': '#92CCFF',
     'grappling': '#FFB4AB',
     'conditioning': '#E9C349',
-    'mma': '#4497D3'
+    'mma': '#4497D3',
+    'yoga': '#7CC4A5'
 }
 
 function ScheduleCard({ color, classItem }: { color: string, classItem: ClassSchedule['data'] }) {
@@ -61,15 +64,15 @@ function ScheduleDayColumn({ day, classSchedule }: { day: Days, classSchedule: C
     )
 }
 
-function ScheduleOptionButton({ selectedFilter, filterOption }: { selectedFilter: Signal<FilterOptionNames>, filterOption: FilterOptions }) {
+function ScheduleFilterButton({ selectedFilter, filterOption }: { selectedFilter: Signal<FilterOptionNames>, filterOption: FilterOptions }) {
     return (
         <button
             className="grow-0 shrink-1 basis-[clamp(7rem,20cqw,10.25rem)] py-5 flex flex-col justify-center items-center bg-[#1C1B1B]"
             onClick={() => { selectedFilter.value = filterOption.name }}
             style={(filterOption.name === selectedFilter.value ? `border` : `border-bottom`) + `: 4px solid ${classTypeColors[filterOption.name]}`}
         >
-            <img src={filterOption.icon.src} />
-            <p className="text-xs" style={`color: ` + (filterOption.name === selectedFilter.value ? `white` : `#c0c7d1; opacity: 50%;`)}>{filterOption.name.toUpperCase()}</p>
+            <img className="lg:w-[28px] lg:h-[28px]" src={filterOption.icon.src} />
+            <p className="lg:text-normal text-xs" style={`color: ` + (filterOption.name === selectedFilter.value ? `white` : `#c0c7d1; opacity: 50%;`)}>{filterOption.name.toUpperCase()}</p>
         </button>
     )
 }
@@ -107,7 +110,7 @@ export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[]
                 <p className="text-neutral-2 opacity-50 text-md text-bold uppercase">filter by</p>
                 <div className="flex flex-wrap justify-center items-stretch gap-4 max-w-[1280px] w-full p-0 [container-type:inline-size] bg-[#131313]">
                     {filterOptions.map((filterOption: FilterOptions) => (
-                        <ScheduleOptionButton selectedFilter={selectedFilter} filterOption={filterOption} />
+                        <ScheduleFilterButton selectedFilter={selectedFilter} filterOption={filterOption} />
                     ))}
                 </div>
             </section>

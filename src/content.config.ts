@@ -56,7 +56,8 @@ const schedule = defineCollection({
                 "striking",
                 "grappling",
                 "conditioning",
-                "mma"
+                "mma",
+                "yoga"
             ])
         ),
     }),
