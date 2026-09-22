@@ -39,7 +39,7 @@ function ScheduleCard({ color, classItem }: { color: string, classItem: ClassSch
     return (
         <div className="flex flex-col bg-[#1C1B1B] px-3 py-8 gap-2 box-[outline]" style={`border-left: 4px solid ${color};`}>
             <p className="text-[10px] lg:text-[12px]" style={`color: ${color};`}>{classItem.startTime} - {classItem.endTime}</p>
-            <p className="text-neutral-1 uppercase text-sm lg:text-lg tracking-[0px] leading-[17.5px]">{classItem.className}</p>
+            <p className="text-neutral-1 uppercase text-sm lg:text-base tracking-[0px] leading-[17.5px]">{classItem.className}</p>
         </div>
     )
 }

@@ -1,20 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ClassGrid } from "../components/classes/ClassGrid.astro";
+import ClassGrid from "../components/classes/ClassGrid.astro";
+import CTAForm from "../components/CTAForm.astro";
 ---
 
 <Layout>
-		<section class="flex flex-col">
-			<div
-				class="relative z-10 flex flex-col max-w-[700px] w-full px-6 py-15 lg:px-0 lg:py-0 max-md:mx-auto max-md:w-fit">
+	<section class="flex flex-col w-ful">
+		<div class="flex flex-col lg:flex-row w-full px-6 py-38 max-md:mx-auto max-md:w-fit border-b-2 border-b-[#40485030]">
+			<div class="flex flex-col justify-end w-full">
+				<p class="font-bold text-brand-primary tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]">
+					elite instruction
+				</p>
 				<h1
-					class="font-bold text-white uppercase text-[96px] max-lg:text-[48px] tracking-[-7.2px] lg:tracking-[-6.4px] max-lg:tracking-[-3px] leading-[96px] max-lg:leading-[56px] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)] text-brand-primary">
+					class="font-bold text-white uppercase text-[68px] max-lg:text-[40px] tracking-[-7.2px] lg:tracking-[-3.6px] max-lg:tracking-[-3px] max-lg:leading-[56px] [text-shadow:0px_4px_20px_rgba(0,0,0,0.8)] text-brand-primary">
 					training programs
 				</h1>
-				<p
-					class="mt-4 text-xl leading-[28px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1 max-w-[550px] lg:max-w-[700px] max-sm:text-[16px] max-sm:leading-[24px] max-sm:tracking-[-0.4px]">
-                    Systematic martial arts instruction designed for competitive dominance and elite physical preparedness.
+			</div>
+			<div class="flex flex-col justify-end">
+				<p class="mt-4 text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1 max-w-[550px] lg:max-w-[700px] max-sm:text-[16px] max-sm:leading-[26px] max-sm:tracking-[-0.4px]">
+					Systematic martial arts instruction designed for competitive dominance and elite physical preparedness.
 				</p>
 			</div>
-		</section>
+		</div>
+	</section>
+	<section class="px-6 py-8">
+		<ClassGrid />
+	</section>
+	<CTAForm />
 </Layout>
