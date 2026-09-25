@@ -13,7 +13,7 @@ const classes = defineCollection({
         description: z.string(),
         excerpt: z.string(),
         featuredImagePath: image(),
-        // classPageImagePath: image()
+        classPageImagePath: image()
     }),
 })
 
