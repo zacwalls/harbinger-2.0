@@ -1,5 +1,7 @@
 ---
 import { getCollection } from "astro:content";
+
+import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import Layout from "../../layouts/Layout.astro";
 import CTAForm from "../../components/CTAForm.astro";
 
@@ -13,17 +15,18 @@ export async function getStaticPaths() {
 }
 
 const {classItem } = Astro.props;
-const { title, excerpt, description, classPageImagePath } = classItem.data;
+const { title, excerpt, description, classImageDesktop, classImageMobile } = classItem.data;
 ---
 
 <Layout>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
-		<div class="absolute inset-0 w-full h-full aspect-[16/5] left-0">
-			<img
+		<div class="absolute inset-0 w-full h-full aspect-[16/9] left-0">
+			<ResponsiveImage
 				alt=""
-				class="absolute w-full  h-full object-cover object-top grayscale opacity-80"
-				src={classPageImagePath?.src!}
+				className="absolute w-full  h-full object-cover object-bottom grayscale opacity-80"
+				mobileImgUrl={classImageMobile}
+				desktopImgUrl={classImageDesktop}
 			/>
 		</div>
 		<div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.63)_10.1%,rgba(80,80,80,0.63)_46.15%,rgba(0,0,0,0.63)_87.02%),linear-gradient(0deg,#131313_0%,rgba(19,19,19,0.4)_50%,rgba(19,19,19,0)_100%)]"></div>

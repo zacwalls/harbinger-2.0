@@ -7,7 +7,7 @@ import StrikingIcon from '../assets/icons/striking.svg'
 import GrapplingIcon from '../assets/icons/grappling.svg'
 import ConditioningIcon from '../assets/icons/dumbell.svg'
 import MMAIcon from '../assets/icons/mma.svg'
-import Yoga from '../assets/icons/yoga.svg'
+import YogaIcon from '../assets/icons/yoga.svg'
 
 type ClassSchedule = CollectionEntry<'schedule'>;
 type FilterOptionNames = typeof filterOptionNames[number]
@@ -23,7 +23,7 @@ const filterOptions: FilterOptions[] = [
     { name: 'grappling', icon: GrapplingIcon },
     { name: 'conditioning', icon: ConditioningIcon },
     { name: 'mma', icon: MMAIcon },
-    { name: 'yoga', icon: Yoga }
+    { name: 'yoga', icon: YogaIcon }
 ]
 
 const classTypeColors = {

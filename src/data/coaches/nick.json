@@ -1,8 +1,8 @@
 {
     "name": "Nick",
     "title": "Muay Thai Coach",
-    "bio": "",
-    "discipline": "",
-    "excerpt": "",
+    "excerpt": "From Kyokushin Karate to Muay Thai, Coach Nick brings over two decades of striking experience and world-class training lineage to every class.",
+    "bio": "Coach Nick's journey in martial arts began at age 11, when he started training in Kyokushin Karate, a discipline he trained in consistently for 16 years. At 27, he moved to the United States, where he began training kickboxing under legendary coach Benny \"the Jet\" Urquidez. He spent 5 years refining his kickboxing under Urquidez before transitioning to Muay Thai, training at MTA North Hollywood under Kru Puk.\n\nWith a foundation built across multiple striking disciplines and decades of hands-on training under respected coaches, Nick brings a rare depth of technical knowledge and real-world experience to every class he teaches.",
+    "discipline": "Muay Thai",
     "featuredImagePath": "../../assets/coaches/nick-featured.jpg"
 }

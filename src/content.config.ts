@@ -12,8 +12,9 @@ const classes = defineCollection({
         title: z.string(),
         description: z.string(),
         excerpt: z.string(),
-        featuredImagePath: image(),
-        classPageImagePath: image()
+        featuredImage: image(),
+        classImageDesktop: image(),
+        classImageMobile: image()
     }),
 })
 

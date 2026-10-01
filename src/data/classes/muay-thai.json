@@ -1,7 +1,8 @@
 {
     "title": "Muay Thai",
-    "description": "",
-    "excerpt": "",
-    "featuredImagePath": "../../assets/classes/muay-thai-featured.png",
-    "classPageImagePath": ""
+    "excerpt": "The art of eight limbs. Muay Thai trains fists, elbows, knees, and shins into a complete striking arsenal built for devastating close-range combat.",
+    "description": "Muay Thai, often called \"the art of eight limbs,\" is a striking-based martial art from Thailand that uses fists, elbows, knees, and shins as weapons, giving practitioners far more offensive tools than traditional boxing alone. Combined with a strong clinch game, Muay Thai is one of the most complete and battle-tested striking systems in the world, and a cornerstone of modern MMA stand-up fighting.\n\nWhat sets Muay Thai apart is its range and versatility. Fighters learn to control distance and land damage at every level: punches and kicks at long range, knees and elbows in close, and devastating clinch work that ties the two together. The result is a style built for real fighting, where every part of the body becomes a potential weapon and every position.\n\nIn our Muay Thai classes, you'll train foundational punches and kicks, elbow and knee strikes, teeps (push kicks), and clinch technique, building toward fluid combinations and fight-ready timing. Training blends pad work, bag work, and partner drilling, with an emphasis on proper technique, conditioning, and the balance and hip rotation that generate real power behind every strike.",
+    "featuredImage": "../../assets/classes/muay-thai-featured.png",
+    "classImageDesktop": "../../assets/classes/muay-thai-banner-desktop.jpeg",
+    "classImageMobile": "../../assets/classes/muay-thai-banner-mobile.jpeg"
 }

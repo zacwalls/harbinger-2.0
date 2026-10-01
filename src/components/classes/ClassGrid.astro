@@ -10,7 +10,7 @@ const classes = (await getCollection('classes').then((classes) => classes.slice(
         <ClassCard
             name={classItem.data.title}
             excerpt={classItem.data.excerpt}
-            thumbnail={classItem.data.featuredImagePath}
+            thumbnail={classItem.data.featuredImage}
         />
     ))}
 </div>

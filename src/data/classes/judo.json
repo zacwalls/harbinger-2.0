@@ -1,7 +1,8 @@
 {
     "title": "Judo",
-    "description": "",
-    "excerpt": "",
-    "featuredImagePath": "../../assets/classes/judo-featured.png",
-    "classPageImagePath": ""
+    "excerpt": "Judo teaches explosive throws, precise footwork, and off-balancing techniques that end fights before they hit the ground.",
+    "description": "Judo is a martial art built around throws, takedowns, and off-balancing, using an opponent's own momentum and weight against them rather than meeting force with force. Developed in Japan in the late 1800s, Judo was one of the first martial arts to formalize sport competition and live sparring (randori), and its influence runs deep through wrestling, BJJ, and modern MMA takedown game.\n\nThe heart of Judo is kuzushi: breaking an opponent's balance, followed by precise entries and explosive hip or leg throws that put them on the ground with speed and control. Beyond standing techniques, Judo also includes pins, joint locks, and chokes once the fight hits the mat, making it a well-rounded grappling art in its own right.",
+    "featuredImage": "../../assets/classes/judo-featured.png",
+    "classImageDesktop": "../../assets/classes/judo-banner-desktop.jpeg",
+    "classImageMobile": "../../assets/classes/judo-banner-mobile.jpeg"
 }

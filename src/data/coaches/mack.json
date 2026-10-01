@@ -1,8 +1,9 @@
 {
     "name": "Mack",
     "title": "Yoga Instructor",
-    "bio": "Coach Mack has a background in competitive gymnastics, beginning at a young age and later transitioning into coaching. Her experience in gymnastics sparked a continued interest in movement, leading her to become a certified yoga instructor. Mackenzie focuses on building strength, mobility, and flexibility to help athletes move better, recover, and feel their best. ",
-    "discipline": "Grappling / MMA",
-    "excerpt": "Mackenzie focuses on building strength, mobility, and flexibility to help athletes move better, recover, and feel their best.",
-    "featuredImagePath": "../../assets/coaches/mack-featured.jpg"
+    "excerpt": "Coach Mack helps athletes build the strength, mobility, and flexibility to move better and recover smarter.",
+    "bio": "Coach Mackenzie's path to yoga started in competitive gymnastics, a sport she began at a young age and later transitioned into coaching. That early relationship with movement sparked a deeper interest in how the body works, eventually leading her to become a certified yoga instructor. Today, Mackenzie focuses on building strength, mobility, and flexibility, helping athletes move better, recover faster, and feel their best both on and off the mat.",
+    "discipline": "Yoga",
+    "headshotImagePath": "../../assets/coaches/mack-headshot.jpeg",
+    "featuredImagePath": "../../assets/coaches/mack-featured.jpeg"
 }

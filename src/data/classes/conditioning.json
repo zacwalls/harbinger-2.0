@@ -1,7 +1,8 @@
 {
     "title": "Conditioning",
-    "description": "",
-    "excerpt": "",
-    "featuredImagePath": "../../assets/classes/conditioning-featured.png",
-    "classPageImagePath": ""
+    "excerpt": "Our Conditioning programs build the strength, speed, and endurance that combat sports demand.",
+    "description": "Conditioning is where fight-ready athletes are made. While technique wins fights, conditioning determines who's still sharp, strong, and fast in the third round. Our conditioning programs are designed to build the physical foundation every martial artist needs, whether you're actively competing or just want to train with the intensity of a fighter.\n\nWe offer a few different conditioning formats, each targeting a different piece of athletic performance:\n\nFight Prep Conditioning\nBuilt specifically for competitors, these classes simulate the physical demands of a real fight rounds of high-intensity work broken up by short rest, mirroring the pace and pressure of actual competition. Expect circuit-style training, bag work integration, and conditioning drills designed to build the gas tank you need to perform when it matters most.\n\nStrength-Focused Conditioning\nThese classes build the raw power and durability behind every strike, takedown, and scramble. Using resistance training, bodyweight strength work, and functional movement patterns, you'll develop the kind of strength that translates directly to grappling control and striking power.\n\nSpeed & Agility Conditioning\nFast hands and quick feet start here. These classes focus on explosiveness, reaction time, and footwork, using drills that sharpen your ability to move efficiently and react instantly.\n\nWhether your goal is competition, general fitness, or simply training like an athlete, our conditioning classes are built to push you and complement whatever martial art you're training in.",
+    "featuredImage": "../../assets/classes/conditioning-featured.png",
+    "classImageDesktop": "../../assets/classes/conditioning-banner-desktop.jpeg",
+    "classImageMobile": "../../assets/classes/conditioning-banner-mobile.jpeg"
 }
