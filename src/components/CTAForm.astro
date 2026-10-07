@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import CTAPrimary from "./CTAPrimary.astro";
-import checkmark from "/src/assets/icons/checkmark.svg";
+import Checkmark from "/src/assets/icons/checkmark.svg";
 import chevronDown from "/src/assets/icons/chevron-down-1.svg";
 ---
 
@@ -18,15 +18,15 @@ import chevronDown from "/src/assets/icons/chevron-down-1.svg";
 			<p class="text-[#c0c7d1] text-[20px] text-[16px] leading-[28px]">Enter your details below and we'll reach out to schedule your first session for free.</p>
 			<div class="flex flex-col gap-6 max-md:gap-2 mt-2">
 				<div class="flex items-center gap-4">
-					<Image src={checkmark} alt="" format="svg" quality="high" />
+					<Checkmark class="fill-brand-secondary" />
 					<span class="text-[#e5e2e1] text-[14px] tracking-[1.4px] uppercase">Pro-Level Coaching Staff</span>
 				</div>
 				<div class="flex items-center gap-4">
-					<Image src={checkmark} alt="" format="svg" quality="high" />
+					<Checkmark class="fill-brand-secondary" />
 					<span class="text-[#e5e2e1] text-[14px] tracking-[1.4px] uppercase">Pathways to competition</span>
 				</div>
 				<div class="flex items-center gap-4">
-					<Image src={checkmark} alt="" format="svg" quality="high"/>
+					<Checkmark class="fill-brand-secondary" />
 					<span class="text-[#e5e2e1] text-[14px] tracking-[1.4px] uppercase">Elite coaching for all levels</span>
 				</div>
 			</div>
@@ -62,6 +62,7 @@ import chevronDown from "/src/assets/icons/chevron-down-1.svg";
 							<option value="boxing" class="bg-[#1c1b1b]">Boxing</option>
 							<option value="wrestling" class="bg-[#1c1b1b]">Wrestling</option>
 							<option value="mma" class="bg-[#1c1b1b]">MMA</option>
+							<option value="yoga" class="bg-[#1c1b1b]">Yoga</option>
 						</select>
 						<div class="absolute right-[9px] top-1/2 -translate-y-1/2 pointer-events-none">
 							<Image src={chevronDown} alt="" format="svg" quality="high" />

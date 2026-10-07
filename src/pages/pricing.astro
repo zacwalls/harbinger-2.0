@@ -1,0 +1,106 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTAForm from "../components/CTAForm.astro";
+import Checkmark from "../assets/icons/checkmark.svg";
+import CTAPrimary from "../components/CTAPrimary.astro";
+import CTASecondary from "../components/CTASecondary.astro";
+---
+
+<Layout>
+	<section class="flex flex-col px-6 py-24 gap-6 lg:gap-12">
+		<div class="flex flex-col justify-center items-center gap-3">
+			<p class="font-bold text-brand-secondary tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]">memberships</p>
+			<h1 class="text-neutral-2 bg-color-black uppercase font-bold text-4xl text-center">choose how you train</h1>
+			<p class="text-normal text-center leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1 max-sm:text-[16px] max-sm:leading-[26px] max-sm:tracking-[-0.4px]">Clear options, elite coaching, cancel whenever you want.</p>
+		</div>
+		<div class="flex flex-col lg:flex-row gap-5">
+			<div class="flex flex-col basis-1/3 gap-5 bg-neutral-3 p-6 border border-white/10">
+				<div class="flex flex-col gap-2">
+					<h3 class="text-2xl font-bold uppercase text-neutral-2">month-to-month</h3>
+					<p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">Unlimited access with no long-term commitment.</p>
+				</div>
+				<h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$105<span class="text-xs font-normal text-[#8A919B]">/ month</span>
+				</h1>
+				<div class="flex flex-col py-5 gap-3">
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">Unlimited access</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">Any class, any time</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">All open gym hours</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">No long-term commitment</p>
+					</div>
+				</div>
+				<CTASecondary href="/signup">book first class</CTASecondary>
+			</div>
+			<div class="flex flex-col  basis-1/3 bg-neutral-3 border border-brand-primary">
+                <div class="flex items-center justify-center text-black text-xs font-bold uppercase w-full bg-brand-primary py-1">best value</div>
+				<div class="flex flex-col p-6 pt-2 gap-5 bg-neutral-3 border-l-brand-primary border-r-brand-primary border-b-brand-primary">
+                    <div class="flex flex-col gap-2">
+                        <h3 class="text-2xl font-bold uppercase text-brand-primary">3-month pass</h3>
+                        <p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">
+                            The best-value option for consistent training.
+                        </p>
+                    </div>
+                    <h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$297<span class="text-xs font-normal text-[#8A919B]">/ 3 months</span>
+                    </h1>
+                    <div class="flex flex-col py-5 gap-3">
+                        <div class="flex items-center gap-2">
+                            <Checkmark class="fill-brand-primary" />
+                            <p class="text-neutral-1">Unlimited access</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Checkmark class="fill-brand-primary" />
+                            <p class="text-neutral-1">Any class, any time</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Checkmark class="fill-brand-primary" />
+                            <p class="text-neutral-1">All open gym hours</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Checkmark class="fill-brand-primary" />
+                            <p class="text-neutral-1">$99 / month average</p>
+                        </div>
+                    </div>
+                    <CTAPrimary class="bg-brand-secondary" href="/signup">book first class</CTAPrimary>
+                </div>
+			</div>
+			<div class="flex flex-col  basis-1/3 gap-5 bg-neutral-3 p-6 border border-white/10">
+				<div class="flex flex-col gap-2">
+					<h3 class="text-2xl font-bold uppercase text-neutral-2">day pass</h3>
+					<p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">A flexible one-day option for visitors and drop-ins.</p>
+				</div>
+				<h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$18<span class="text-xs font-normal text-[#8A919B]">/ day</span>
+				</h1>
+				<div class="flex flex-col py-5 gap-3">
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">Unlimited access</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">Any class, any time</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">All open gym hours</p>
+					</div>
+					<div class="flex items-start gap-2">
+						<Checkmark class="fill-brand-secondary" />
+						<p class="text-neutral-1">One full day of access across all disciplines</p>
+					</div>
+				</div>
+				<CTASecondary href="/signup">book first class</CTASecondary>
+			</div>
+		</div>
+	</section>
+	<CTAForm />
+</Layout>
