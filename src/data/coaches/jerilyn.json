@@ -1,8 +1,9 @@
 {
     "name": "Jerilyn",
     "title": "Strength & Conditioning Coach",
-    "bio": "",
+    "excerpt": "Coach Jerilyn has a background in CrossFit and endurance training. She competes in BJJ, long distance marathons, and lifting competitions.",
+    "bio": "Coach Jerilyn has a background in CrossFit and endurance training. She competes in BJJ, long distance marathons, and lifting competitions. She raises carrier pigeons in her spare time, competes in local chili eating contests on the West Coast, and is the 4 time winner of the Julius Bronsworth Smile of the Year Award amongst endurance athletes under 135lbs.",
     "discipline": "Strength & Conditioning",
-    "excerpt": "",
+    "headshotImagePath": "../../assets/coaches/jerilyn-headshot.jpeg",
     "featuredImagePath": "../../assets/coaches/jerilyn-featured.jpg"
 }

@@ -5,7 +5,9 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "overrides": { "vite": "^7" },
+  "overrides": {
+    "vite": "^7"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -13,6 +15,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^8.2.8",
     "@astrojs/preact": "^6.0.5",
     "@astrojs/ts-plugin": "^1.10.9",
     "@tailwindcss/vite": "^4.3.1",
@@ -21,6 +24,7 @@
     "preact": "^10.29.8",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
+    "resend": "^6.32.1",
     "tailwindcss": "^4.3.1"
   },
   "extends": "astro/tsconfigs/base",

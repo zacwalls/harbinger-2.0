@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import preact from "@astrojs/preact";
+import netlify from "@astrojs/netlify";
 
 const isStaging = process.env.NODE_ENV === 'staging';
 
@@ -10,9 +11,11 @@ export default defineConfig({
   output: "static",
   site: isStaging ? "https://zacwalls.github.io/" : "https://harbingermma.com",
   base: isStaging ? "/harbinger-2.0/" : "/",
+
   redirects: {
     "/home": "/",
   },
+
   image: {
     domains: ['localhost', '://onrender.com'],
   },
@@ -21,5 +24,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [preact()]
+  integrations: [preact()],
+  adapter: netlify({
+        imageCDN: false,
+  })
 });

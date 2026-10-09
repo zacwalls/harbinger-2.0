@@ -1,6 +1,8 @@
 ---
-import Nav from "../components/Nav.astro"
-import Footer from "../components/Footer.astro"
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -11,11 +13,12 @@ import Footer from "../components/Footer.astro"
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title || "Harbinger MMA"}</title>
 	</head>
 	<body>
 		<Nav />
-		<div class="bg-[#0e0e0e] font-['Space Grotesk',sans-serif] overflow-clip">
+		<div
+			class="bg-[#0e0e0e] font-['Space Grotesk',sans-serif] overflow-clip">
 			<slot />
 			<Footer />
 		</div>
@@ -23,15 +26,24 @@ import Footer from "../components/Footer.astro"
 </html>
 
 <style is:global>
-  @import "tailwindcss";
-  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
-  @theme {
-    --font-display: "Space Grotesk", sans-serif;
-    --default-font-family: "Space Grotesk", sans-serif;
-    --color-neutral-1: #c0c7d1;
-	--color-neutral-2: #E5E2E1;
-	--color-neutral-3: #1C1B1B;
-    --color-brand-primary: #2e86c1;
-    --color-brand-secondary: #e9c349;
-  }
+	@import "tailwindcss";
+	@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+	@theme {
+		--font-display: "Space Grotesk", sans-serif;
+		--default-font-family: "Space Grotesk", sans-serif;
+		--color-neutral-1: #c0c7d1;
+		--color-neutral-2: #e5e2e1;
+		--color-neutral-3: #1c1b1b;
+		--color-brand-primary: #2e86c1;
+		--color-brand-secondary: #e9c349;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
 </style>
