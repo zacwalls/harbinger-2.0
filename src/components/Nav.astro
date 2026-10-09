@@ -13,59 +13,60 @@ const currentPath = Astro.url.pathname;
     data-name="Top Navigation Bar"
   >
     <!-- Logo -->
-    <Link
-      href="home"
+    <a
+      href="/"
       aria-label="Go to home page"
     >
       <NavLogo class="w-[150px] h-[50px]" />
-    </Link>
+    </a>
 
     <!-- Desktop navigation -->
     <div class="hidden items-center gap-6 lg:flex xl:gap-8">
       <NavItem
-        url="home"
+        url="/"
         pageName="Home"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="classes"
+        url="/classes"
         pageName="Classes"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="coaches"
+        url="/coaches"
         pageName="Coaches"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="schedule"
+        url="/schedule"
         pageName="Schedule"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="pricing"
+        url="/pricing"
         pageName="Pricing"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="shop"
+        url="https://shop.harbingermma.com"
         pageName="Shop"
         currentPath={currentPath}
+        target="_blank"
       />
     </div>
 
     <!-- Desktop CTA -->
-    <Link
-      href="join"
+    <a
+      href="/#claim-trial"
       class="hidden min-h-10 items-center justify-center bg-[#2e86c1] px-6 py-2 font-['Space_Grotesk',sans-serif] text-base font-bold tracking-[-0.4px] text-white uppercase transition-colors hover:bg-[#2474a8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:flex"
     >
       Join Now
-    </Link>
+    </a>
 
     <!-- Mobile menu button -->
     <button
@@ -117,7 +118,7 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile navigation -->
   <div
     id="mobile-menu"
-    class="hidden border-t border-white/10 bg-black/95 px-4 py-5 shadow-xl backdrop-blur-md sm:px-6 lg:hidden"
+    class="hidden absolute top-0 pt-20 z-[-1] w-full border-t border-white/10 bg-gradient-to-b from-black/80 to-transparent px-4 py-5 shadow-xl backdrop-blur-md sm:px-6 lg:hidden h-screen"
   >
     <div class="flex flex-col gap-1">
       <div class="border-b border-white/10 py-3">
@@ -130,7 +131,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="classes"
+          url="/classes"
           pageName="Classes"
           currentPath={currentPath}
         />
@@ -138,7 +139,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="coaches"
+          url="/coaches"
           pageName="Coaches"
           currentPath={currentPath}
         />
@@ -146,27 +147,36 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="schedule"
+          url="/schedule"
           pageName="Schedule"
+          currentPath={currentPath}
+        />
+      </div>
+
+      <div class="border-b border-white/10 py-3">
+        <NavItem
+          url="/pricing"
+          pageName="Pricing"
           currentPath={currentPath}
         />
       </div>
 
       <div class="py-3">
         <NavItem
-          url="shop"
+          url="https://shop.harbingermma.com"
           pageName="Shop"
           currentPath={currentPath}
+          target="_blank"
         />
       </div>
     </div>
 
-    <Link
-      href="join"
-      className="mt-5 flex min-h-12 w-full items-center justify-center bg-[#2e86c1] px-6 py-3 text-base font-bold tracking-[-0.4px] text-white uppercase transition-colors hover:bg-[#2474a8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+    <a
+      href="/#claim-trial"
+      class="mt-5 flex min-h-12 w-full items-center justify-center bg-[#2e86c1] px-6 py-3 text-base font-bold tracking-[-0.4px] text-white uppercase transition-colors hover:bg-[#2474a8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
     >
       Join Now
-    </Link>
+    </a>
   </div>
 </nav>
 

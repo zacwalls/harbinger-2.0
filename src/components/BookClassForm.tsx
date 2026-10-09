@@ -6,6 +6,7 @@ type Status = "idle" | "sending" | "success" | "error";
 const initialValues = {
 	name: "",
 	email: "",
+	phone: "",
 	interest: "muay-thai",
 	"bot-field": "",
 };
@@ -134,6 +135,22 @@ export default function BookClassForm() {
 								placeholder="email@domain.com"
 								value={values.email}
 								onInput={update("email")}
+								class={inputClass}
+							/>
+						</div>
+					</div>
+
+					<div class={fieldWrap}>
+						<label for="trial-phone" class={labelClass}>Phone Number</label>
+						<div class={inputBox}>
+							<input
+								id="trial-phone"
+								type="tel"
+								name="phone"
+								required
+								placeholder="555-555-5555"
+								value={values.phone}
+								onInput={update("phone")}
 								class={inputClass}
 							/>
 						</div>

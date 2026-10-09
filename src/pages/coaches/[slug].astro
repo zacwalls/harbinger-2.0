@@ -16,7 +16,7 @@ const { coach } = Astro.props;
 const { name, excerpt, bio, title, headshotImagePath } = coach.data;
 ---
 
-<Layout>
+<Layout title={`Meet ${name} | Harbinger MMA`} description={excerpt}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 overflow-hidden">

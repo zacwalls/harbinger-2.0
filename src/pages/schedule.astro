@@ -6,6 +6,6 @@ import { getCollection } from 'astro:content';
 const schedule = await getCollection('schedule')
 ---
 
-<Layout>
+<Layout title="Schedule | Harbinger MMA" description="Check out our weekly schedule of classes and training sessions at Harbinger MMA.">
     <WeeklySchedule client:load schedule={schedule} />
 </Layout>
