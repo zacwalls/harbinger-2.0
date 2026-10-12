@@ -8,6 +8,7 @@ const classes = (await getCollection('classes').then((classes) => classes.slice(
 <div class="grid lg:grid-cols-3 md:grid-cols-2 max-sm:grid-cols-1 gap-6" style="grid-template-rows: 450px 450px;">
     {classes.map((classItem) => (
         <ClassCard
+            slug={classItem.id}
             name={classItem.data.title}
             excerpt={classItem.data.excerpt}
             thumbnail={classItem.data.featuredImage}

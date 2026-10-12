@@ -4,9 +4,38 @@ import CTAForm from "../components/CTAForm.astro";
 import Checkmark from "../assets/icons/checkmark.svg";
 import CTAPrimary from "../components/CTAPrimary.astro";
 import CTASecondary from "../components/CTASecondary.astro";
+import { gymId } from "../lib/schema";
+
+const initiationFee = { "@type": "PriceSpecification", name: "Initiation fee", price: 75, priceCurrency: "USD" };
+
+const offer = (name: string, description: string, price: number, unitCode: string, extraSpecs: object[] = []) => ({
+	"@type": "Offer",
+	name,
+	description,
+	priceSpecification: [{ "@type": "UnitPriceSpecification", price, priceCurrency: "USD", unitCode }, ...extraSpecs],
+});
+
+const schema = [
+	{
+		"@type": "ExerciseGym",
+		"@id": gymId(Astro.site!),
+		hasOfferCatalog: {
+			"@type": "OfferCatalog",
+			name: "Memberships",
+			itemListElement: [
+				offer("Month-to-Month", "Unlimited access with no long-term commitment.", 105, "MON", [initiationFee]),
+				offer("3-Month Pass", "The best-value option for consistent training. $297 total for 3 months.", 99, "MON", [
+					{ "@type": "PriceSpecification", name: "3-month total", price: 297, priceCurrency: "USD" },
+					initiationFee,
+				]),
+				offer("Day Pass", "A flexible one-day option for visitors and drop-ins.", 18, "DAY"),
+			],
+		},
+	},
+];
 ---
 
-<Layout title="Pricing | Harbinger MMA" description="Harbinger MMA offers flexible membership options to suit your training needs. Choose from month-to-month, 3-month pass, or day pass options, all with access to elite coaching and world-class facilities.">
+<Layout title="Membership Pricing | Harbinger MMA Portland" schema={schema} description="Harbinger MMA offers flexible membership options to suit your training needs. Choose from month-to-month, 3-month pass, or day pass options, all with access to elite coaching and world-class facilities.">
 	<section class="flex flex-col px-6 py-24 gap-6 lg:gap-12">
 		<div class="flex flex-col justify-center items-center gap-3">
 			<p class="font-bold text-brand-secondary tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]">memberships</p>
@@ -19,9 +48,12 @@ import CTASecondary from "../components/CTASecondary.astro";
 					<h3 class="text-2xl font-bold uppercase text-neutral-2">month-to-month</h3>
 					<p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">Unlimited access with no long-term commitment.</p>
 				</div>
-				<h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$105<span class="text-xs font-normal text-[#8A919B]">/ month</span>
-				</h1>
-				<div class="flex flex-col py-5 gap-3">
+				<div class="flex flex-col gap-2 border-b-1 border-b-[#FFFFFF10] pb-5">
+					<h1 class="text-5xl text-white font-bold">$105<span class="text-xs font-normal text-[#8A919B]">/ month</span>
+					</h1>
+					<p class="text-sm font-bold text-brand-secondary">+ $75 one-time initiation fee</p>
+				</div>
+				<div class="flex flex-col flex-1 py-5 gap-3">
 					<div class="flex items-center gap-2">
 						<Checkmark class="fill-brand-secondary" />
 						<p class="text-neutral-1">Unlimited access</p>
@@ -43,16 +75,19 @@ import CTASecondary from "../components/CTASecondary.astro";
 			</div>
 			<div class="flex flex-col  basis-1/3 bg-neutral-3 border border-brand-primary">
                 <div class="flex items-center justify-center text-black text-xs font-bold uppercase w-full bg-brand-primary py-1">best value</div>
-				<div class="flex flex-col p-6 pt-2 gap-5 bg-neutral-3 border-l-brand-primary border-r-brand-primary border-b-brand-primary">
+				<div class="flex flex-col flex-1 p-6 pt-2 gap-5 bg-neutral-3 border-l-brand-primary border-r-brand-primary border-b-brand-primary">
                     <div class="flex flex-col gap-2">
                         <h3 class="text-2xl font-bold uppercase text-brand-primary">3-month pass</h3>
                         <p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">
                             The best-value option for consistent training.
                         </p>
                     </div>
-                    <h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$99<span class="text-xs font-normal text-[#8A919B]"> / month</span>
-                    </h1>
-                    <div class="flex flex-col py-5 gap-3">
+                    <div class="flex flex-col gap-2 border-b-1 border-b-[#FFFFFF10] pb-5">
+                        <h1 class="text-5xl text-white font-bold">$99<span class="text-xs font-normal text-[#8A919B]"> / month</span>
+                        </h1>
+                        <p class="text-base font-bold text-white">$297 total for 3 months</p>
+                    </div>
+                    <div class="flex flex-col flex-1 py-5 gap-3">
                         <div class="flex items-center gap-2">
                             <Checkmark class="fill-brand-primary" />
                             <p class="text-neutral-1">Unlimited access</p>
@@ -67,10 +102,10 @@ import CTASecondary from "../components/CTASecondary.astro";
                         </div>
                         <div class="flex items-center gap-2">
                             <Checkmark class="fill-brand-primary" />
-                            <p class="text-neutral-1">$99 / month average</p>
+                            <p class="text-neutral-1">$297 total ($99 / month average)</p>
                         </div>
                     </div>
-                    <CTAPrimary href="#claim-trial">book first class</CTAPrimary>
+                    <CTAPrimary url="#claim-trial">book first class</CTAPrimary>
                 </div>
 			</div>
 			<div class="flex flex-col  basis-1/3 gap-5 bg-neutral-3 p-6 border border-white/10">
@@ -80,7 +115,7 @@ import CTASecondary from "../components/CTASecondary.astro";
 				</div>
 				<h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$18<span class="text-xs font-normal text-[#8A919B]">/ day</span>
 				</h1>
-				<div class="flex flex-col py-5 gap-3">
+				<div class="flex flex-col flex-1 py-5 gap-3">
 					<div class="flex items-center gap-2">
 						<Checkmark class="fill-brand-secondary" />
 						<p class="text-neutral-1">Unlimited access</p>
@@ -98,7 +133,7 @@ import CTASecondary from "../components/CTASecondary.astro";
 						<p class="text-neutral-1">One full day of access across all disciplines</p>
 					</div>
 				</div>
-				<CTASecondary href="#claim-trial">book first class</CTASecondary>
+				<CTASecondary url="#claim-trial">book first class</CTASecondary>
 			</div>
 		</div>
 	</section>

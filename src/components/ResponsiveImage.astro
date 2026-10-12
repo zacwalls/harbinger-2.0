@@ -3,27 +3,50 @@ import type { ImageMetadata } from "astro";
 import { getImage } from "astro:assets";
 
 interface Props {
-	mobileImgUrl: string | ImageMetadata;
-	desktopImgUrl: string | ImageMetadata;
+	mobileImgUrl: ImageMetadata;
+	desktopImgUrl: ImageMetadata;
 	className: string;
 	alt: string;
 }
 
 const { mobileImgUrl, desktopImgUrl, alt, className } = Astro.props;
 
-const mobileImg = await getImage({
-	src: mobileImgUrl,
-	format: "webp",
-});
+// Never upscale: clamp widths to the source image width.
+const fitWidths = (img: ImageMetadata, widths: number[]) => [
+	...new Set(widths.map((w) => Math.min(w, img.width))),
+];
 
-const desktopImg = await getImage({
-	src: desktopImgUrl,
-	format: "webp",
-});
+// AVIF first; browsers without AVIF support fall through to WebP.
+const formats = ["avif", "webp"] as const;
+
+const variants = (src: ImageMetadata, widths: number[]) =>
+	Promise.all(
+		formats.map(async (format) => ({
+			format,
+			image: await getImage({ src, widths: fitWidths(src, widths), format }),
+		})),
+	);
+
+const mobileImgs = await variants(mobileImgUrl, [480, 800, 1200]);
+const desktopImgs = await variants(desktopImgUrl, [1280, 1920, 2560]);
+const fallback = desktopImgs.find((v) => v.format === "webp")!.image;
 ---
 
 <picture class={className}>
-	<source media="(max-width: 799px)" srcset={mobileImg.src} />
-	<source media="(min-width: 800px)" srcset={desktopImg.src} />
-	<img class="w-full h-full" src={desktopImg.src} alt={alt} />
+	{mobileImgs.map(({ format, image }) => (
+		<source media="(max-width: 799px)" type={`image/${format}`} srcset={image.srcSet.attribute} sizes="100vw" />
+	))}
+	{desktopImgs.map(({ format, image }) => (
+		<source media="(min-width: 800px)" type={`image/${format}`} srcset={image.srcSet.attribute} sizes="100vw" />
+	))}
+	<img
+		class="w-full h-full"
+		src={fallback.src}
+		alt={alt}
+		width={desktopImgUrl.width}
+		height={desktopImgUrl.height}
+		loading="eager"
+		fetchpriority="high"
+		decoding="async"
+	/>
 </picture>

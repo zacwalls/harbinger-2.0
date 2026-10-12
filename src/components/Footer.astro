@@ -3,12 +3,18 @@ import NavLogo from "../assets/NavLogo.svg";
 import FacebookIcon from "../assets/icons/facebook.svg";
 import InstagramIcon from "../assets/icons/instagram.svg";
 import TiktokIcon from "../assets/icons/tiktok.svg";
+
+const hours = [
+    { days: "Mon-Fri", time: "8 AM-9:30 PM" },
+    { days: "Sat", time: "9 AM-12:30 PM" },
+    { days: "Sun", time: "10 AM-3:30 PM" },
+];
 ---
 
 <footer class="w-full flex flex-col py-16 px-8 gap-16 border-[rgba(64,72,80,0.1)] border-solid border-t inset-0">
     <div class="flex max-md:flex-wrap max-w-[1280px] relative shrink-0 w-full justify-start gap-12">
         <div class="flex flex-col grow lg:max-w-[300px] max-md:w-full uppercase">
-            <NavLogo class="w-36" /><br>
+            <img src={NavLogo.src} alt="Harbinger MMA" width="144" height="58" loading="lazy" class="w-36 h-auto" /><br>
             <p class="text-neutral-1 max-sm:text-sm">2626 S Corbett Ave,<br>Portland, OR 97201</p><br>
             <p class="text-neutral-1 leading-10 max-sm:text-sm"><a href="tel:5033105001">(503) 310-5001</a></p>
             <p class="text-neutral-1 leading-10 max-sm:text-sm"><a href="mailto:contact@harbingermma.com">contact@harbingermma.com</a></p>
@@ -16,20 +22,31 @@ import TiktokIcon from "../assets/icons/tiktok.svg";
         <div class="flex flex-col grow">
             <h3 class="uppercase font-bold text-brand-secondary mb-6 tracking-[1.4px]">programs</h3>
             <div class="flex flex-col gap-3">
-                <a href="/classes/mma" class="text-neutral-1 uppercase max-sm:text-sm">MMA</a>
-                <a href="/classes/bjj" class="text-neutral-1 uppercase max-sm:text-sm">BJJ</a>
-                <a href="/classes/boxing" class="text-neutral-1 uppercase max-sm:text-sm">BOXING</a>
-                <a href="/classes/muay-thai" class="text-neutral-1 uppercase max-sm:text-sm">Muay Thai</a>
+                <a href="/classes/mma/" class="text-neutral-1 uppercase max-sm:text-sm">MMA</a>
+                <a href="/classes/bjj/" class="text-neutral-1 uppercase max-sm:text-sm">BJJ</a>
+                <a href="/classes/boxing/" class="text-neutral-1 uppercase max-sm:text-sm">BOXING</a>
+                <a href="/classes/muay-thai/" class="text-neutral-1 uppercase max-sm:text-sm">Muay Thai</a>
             </div>
         </div>
         <div class="flex flex-col grow">
             <h3 class="uppercase font-bold text-brand-secondary mb-6 tracking-[1.4px]">community</h3>
             <div class="flex flex-col gap-3">
-                <a href="/coaches" class="text-neutral-1 uppercase max-sm:text-sm">coaches</a>
-                <a href="/pricing" class="text-neutral-1 uppercase max-sm:text-sm">pricing</a>
-                <a href="/schedule" class="text-neutral-1 uppercase max-sm:text-sm">schedule</a>
-                <a href="/shop" class="text-neutral-1 uppercase max-sm:text-sm">shop</a>
+                <a href="/coaches/" class="text-neutral-1 uppercase max-sm:text-sm">coaches</a>
+                <a href="/pricing/" class="text-neutral-1 uppercase max-sm:text-sm">pricing</a>
+                <a href="/schedule/" class="text-neutral-1 uppercase max-sm:text-sm">schedule</a>
+                <a href="https://shop.harbingermma.com" target="_blank" class="text-neutral-1 uppercase max-sm:text-sm">shop</a>
             </div>
+        </div>
+                <div class="flex flex-col grow">
+            <h3 class="uppercase font-bold text-brand-secondary mb-6 tracking-[1.4px]">hours</h3>
+            <dl class="grid grid-cols-[auto_auto] justify-start gap-x-6 gap-y-3 text-neutral-1 uppercase max-sm:text-sm">
+                {hours.map(({ days, time }) => (
+                    <>
+                        <dt>{days}</dt>
+                        <dd>{time}</dd>
+                    </>
+                ))}
+            </dl>
         </div>
         <div class="flex flex-col grow">
             <h3 class="uppercase font-bold text-brand-secondary mb-6 tracking-[1.4px]">connect</h3>

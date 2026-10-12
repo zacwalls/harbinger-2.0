@@ -1,4 +1,4 @@
-import { effect, useSignal, Signal } from '@preact/signals';
+import { effect, useSignal, type Signal } from '@preact/signals';
 import type { CollectionEntry } from 'astro:content';
 import type { SvgComponent } from 'astro/types';
 

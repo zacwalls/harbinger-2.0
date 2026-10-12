@@ -1,22 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 import HeroImage from "/src/assets/coaches-hero-bg.jpg";
 import CoachGrid from "../components/coaches/CoachGrid.astro";
 import CTAForm from "../components/CTAForm.astro";
 ---
 
-<Layout title="Coaches | Harbinger MMA" description="Meet our team of elite martial artists and coaches who bring decades of professional experience to the mats.">
+<Layout title="MMA & Martial Arts Coaches in Portland | Harbinger MMA" description="Meet our team of elite martial artists and coaches who bring decades of professional experience to the mats.">
 	<section
 		class="relative flex items-start justify-left py-20 overflow-hidden">
 		<div class="absolute inset-0 overflow-hidden">
-			<Image
+			<Picture
 				alt=""
 				class="absolute w-[120%] h-[140%] max-md:h-[115%] max-sm:w-[1279px] max-sm:h-auto top-[-17%] left-[-13%] max-sm:left-[calc(-1279px*.57)] max-md:left-[-13%] max-w-none opacity-80"
 				src={HeroImage}
-				format="webp"
-				quality="high"
+				widths={[1280, 1920, 2560]}
+				sizes="(max-width: 639px) 1279px, 120vw"
+				formats={["avif", "webp"]}
+				priority
 			/>
 		</div>
 		<div

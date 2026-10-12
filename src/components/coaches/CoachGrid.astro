@@ -9,6 +9,7 @@ const coaches = (await getCollection('coaches').then((coaches) => coaches.slice(
 <div class="flex flex-wrap max-md:flex-col gap-8 justify-center">
     {coaches.map((coach) => (
         <CoachCard
+            slug={coach.id}
             name={coach.data.name}
             title={coach.data.title}
             excerpt={coach.data.excerpt}

@@ -2,13 +2,13 @@
 import CTASecondary from "../CTASecondary.astro";
 import CoachGrid from "../coaches/CoachGrid.astro";
 
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import heroImage from "../../assets/coaches-section-bg.jpg";
 ---
 
 <section class="relative overflow-hidden py-[92px] flex justify-center">
     <div class="absolute left-0 top-0 w-full h-full pointer-events-none overflow-hidden">
-        <Image src={heroImage} alt=""  class="absolute w-[130%] max-md:w-[225%] top-0 max-md:top-[-20%] max-sm:top-0 max-md:left-[-35%] max-w-none" />
+        <Picture src={heroImage} alt="" formats={["avif", "webp"]} widths={[960, 1440, 1920, 2560]} sizes="(max-width: 767px) 225vw, 130vw" class="absolute w-[130%] max-md:w-[225%] top-0 max-md:top-[-20%] max-sm:top-0 max-md:left-[-35%] max-w-none" />
         <div class="absolute inset-0 bg-gradient-to-b from-black/[0.63] via-[rgba(80,80,80,0.63)] to-black/[0.63]"></div>
     </div>
     <div class="relative z-10 w-full max-w-[1232px] px-6">
@@ -28,7 +28,7 @@ import heroImage from "../../assets/coaches-section-bg.jpg";
                 </div>
             </div>
             <div class="flex max-md:flex-col items-stretch w-full">
-                <CTASecondary url="/coaches">view all coaches</CTASecondary>
+                <CTASecondary url="/coaches/">view all coaches</CTASecondary>
             </div>
         </div>
     </div>

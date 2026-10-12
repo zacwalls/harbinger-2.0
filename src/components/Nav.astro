@@ -17,7 +17,7 @@ const currentPath = Astro.url.pathname;
       href="/"
       aria-label="Go to home page"
     >
-      <NavLogo class="w-[150px] h-[50px]" />
+      <img src={NavLogo.src} alt="Harbinger MMA" width="150" height="50" class="w-[150px] h-[50px]" />
     </a>
 
     <!-- Desktop navigation -->
@@ -29,25 +29,25 @@ const currentPath = Astro.url.pathname;
       />
 
       <NavItem
-        url="/classes"
+        url="/classes/"
         pageName="Classes"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="/coaches"
+        url="/coaches/"
         pageName="Coaches"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="/schedule"
+        url="/schedule/"
         pageName="Schedule"
         currentPath={currentPath}
       />
 
       <NavItem
-        url="/pricing"
+        url="/pricing/"
         pageName="Pricing"
         currentPath={currentPath}
       />
@@ -131,7 +131,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="/classes"
+          url="/classes/"
           pageName="Classes"
           currentPath={currentPath}
         />
@@ -139,7 +139,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="/coaches"
+          url="/coaches/"
           pageName="Coaches"
           currentPath={currentPath}
         />
@@ -147,7 +147,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="/schedule"
+          url="/schedule/"
           pageName="Schedule"
           currentPath={currentPath}
         />
@@ -155,7 +155,7 @@ const currentPath = Astro.url.pathname;
 
       <div class="border-b border-white/10 py-3">
         <NavItem
-          url="/pricing"
+          url="/pricing/"
           pageName="Pricing"
           currentPath={currentPath}
         />

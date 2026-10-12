@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-const { name, excerpt, thumbnail } = Astro.props;
+const { slug, name, excerpt, thumbnail } = Astro.props;
 ---
 
-<a href={`/classes/${name.toLowerCase()}`} class="relative rounded-[12px] overflow-hidden border border-white/10 min-h-[450px]">
+<a href={`/classes/${slug}/`} class="relative rounded-[12px] overflow-hidden border border-white/10 min-h-[450px]">
   <div class="absolute inset-px overflow-hidden">
     {thumbnail && (
       <Image
@@ -11,6 +11,8 @@ const { name, excerpt, thumbnail } = Astro.props;
         class="absolute w-full h-full object-cover"
         width={450}
         height={450}
+        widths={[450, 768, 900]}
+        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
         src={thumbnail}
         format="webp"
         quality="high"

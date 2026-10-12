@@ -4,21 +4,38 @@ import { getCollection } from "astro:content";
 import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import Layout from "../../layouts/Layout.astro";
 import CTAForm from "../../components/CTAForm.astro";
+import { breadcrumbs, gymId } from "../../lib/schema";
 
 export async function getStaticPaths() {
 	const classes = await getCollection("classes");
 
 	return classes.map((classItem) => ({
-		params: { slug: classItem.data.title.toLowerCase() },
+		params: { slug: classItem.id },
 		props: { classItem },
 	}));
 }
 
 const {classItem } = Astro.props;
 const { title, excerpt, description, classImageDesktop, classImageMobile } = classItem.data;
+
+const site = Astro.site!;
+const schema = [
+	{
+		"@type": "Service",
+		name: title,
+		serviceType: title,
+		description: excerpt,
+		provider: { "@id": gymId(site) },
+	},
+	breadcrumbs(site, [
+		{ name: "Home", path: "/" },
+		{ name: "Classes", path: "/classes/" },
+		{ name: title, path: `/classes/${classItem.id}/` },
+	]),
+];
 ---
 
-<Layout title={`${title} | Harbinger MMA`} description={excerpt}>
+<Layout title={`${title} Classes in Portland, OR | Harbinger MMA`} description={excerpt} schema={schema}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 w-full h-full aspect-[16/9] left-0">

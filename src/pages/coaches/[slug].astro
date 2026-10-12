@@ -1,30 +1,58 @@
 ---
 import { getCollection } from "astro:content";
+import { getImage, Picture } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import CTAForm from "../../components/CTAForm.astro";
+import { breadcrumbs, gymId } from "../../lib/schema";
 
 export async function getStaticPaths() {
 	const coaches = await getCollection("coaches");
 
 	return coaches.map((coach) => ({
-		params: { slug: coach.data.name.toLowerCase() },
+		params: { slug: coach.id },
 		props: { coach },
 	}));
 }
 
 const { coach } = Astro.props;
-const { name, excerpt, bio, title, headshotImagePath } = coach.data;
+const { name, excerpt, bio, title, discipline, headshotImagePath } = coach.data;
+
+const site = Astro.site!;
+const headshot = headshotImagePath && (await getImage({ src: headshotImagePath, format: "webp" }));
+const schema = [
+	{
+		"@type": "ProfilePage",
+		mainEntity: {
+			"@type": "Person",
+			name,
+			jobTitle: title,
+			description: excerpt,
+			knowsAbout: discipline.split("/").map((d) => d.trim()),
+			...(headshot && { image: new URL(headshot.src, site).href }),
+			worksFor: { "@id": gymId(site) },
+		},
+	},
+	breadcrumbs(site, [
+		{ name: "Home", path: "/" },
+		{ name: "Coaches", path: "/coaches/" },
+		{ name, path: `/coaches/${coach.id}/` },
+	]),
+];
 ---
 
-<Layout title={`Meet ${name} | Harbinger MMA`} description={excerpt}>
+<Layout title={`${name}, ${title} | Harbinger MMA Portland`} description={excerpt} schema={schema}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 overflow-hidden">
-			<img
-				alt=""
+			{headshotImagePath && <Picture
+				alt={`${name}, ${title} at Harbinger MMA`}
 				class="absolute w-[120%] lg:w-full lg:max-h-[700px] top-25 left-[-13%] lg:left-0 grayscale aspect-[1.198] lg:aspect-none max-w-none opacity-80"
-				src={headshotImagePath?.src!}
-			/>
+				src={headshotImagePath}
+				widths={[...new Set([640, 1024, 1440, 1920].map((w) => Math.min(w, headshotImagePath.width)))]}
+				sizes="(min-width: 1024px) 100vw, 120vw"
+				formats={["avif", "webp"]}
+				priority
+			/>}
 		</div>
 		<div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.63)_10.1%,rgba(80,80,80,0.63)_46.15%,rgba(0,0,0,0.63)_87.02%),linear-gradient(0deg,#131313_0%,rgba(19,19,19,0.4)_50%,rgba(19,19,19,0)_100%)]"></div>
 		<div class="relative z-10 flex flex-col max-w-[700px] w-full px-6 py-15 lg:px-0 lg:py-0 max-md:mx-auto max-md:w-fit">
