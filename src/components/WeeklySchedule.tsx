@@ -35,16 +35,18 @@ const classTypeColors = {
     'yoga': '#7CC4A5'
 }
 
-function ScheduleCard({ color, classItem }: { color: string, classItem: ClassSchedule['data'] }) {
+function ScheduleCard({ color, classItem, href }: { color: string, classItem: ClassSchedule['data'], href?: string }) {
     return (
         <div className="flex flex-col bg-[#1C1B1B] px-3 py-8 gap-2 box-[outline]" style={`border-left: 4px solid ${color};`}>
             <p className="text-[10px] lg:text-[12px]" style={`color: ${color};`}>{classItem.startTime} - {classItem.endTime}</p>
-            <p className="text-neutral-1 uppercase text-sm lg:text-base tracking-[0px] leading-[17.5px]">{classItem.className}</p>
+            <p className="text-neutral-1 uppercase text-sm lg:text-base tracking-[0px] leading-[17.5px]">
+                {href ? <a href={href} className="underline decoration-white/30 underline-offset-4 hover:decoration-current">{classItem.className}</a> : classItem.className}
+            </p>
         </div>
     )
 }
 
-function ScheduleDayColumn({ day, classSchedule }: { day: Days, classSchedule: ClassSchedule[] }) {
+function ScheduleDayColumn({ day, classSchedule, classPages }: { day: Days, classSchedule: ClassSchedule[], classPages: Record<string, string> }) {
     const todaysSchedule = classSchedule.filter(classItem => classItem.data.classDay === day)
 
     return (
@@ -57,6 +59,7 @@ function ScheduleDayColumn({ day, classSchedule }: { day: Days, classSchedule: C
                         <ScheduleCard
                             color={classTypeColors[classItem.data.classTypes[0]]}
                             classItem={classItem.data}
+                            href={classPages[classItem.data.className]}
                         />
                     ))}
             </div>
@@ -96,7 +99,7 @@ function toMinutes(timeStr: string) {
     return hours * 60 + minutes;
 }
 
-export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[] }) {
+export default function WeeklySchedule({ schedule, classPages = {} }: { schedule: ClassSchedule[], classPages?: Record<string, string> }) {
     const classSchedule = useSignal(schedule);
     const selectedFilter: Signal<FilterOptionNames> = useSignal('all')
 
@@ -118,7 +121,7 @@ export default function WeeklySchedule({ schedule }: { schedule: ClassSchedule[]
             <section className="flex flex-col justify-center gap-16 px-4 py-20 w-full">
                 <h1 className="text-neutral-1 bg-color-black uppercase font-bold text-4xl text-center">Current Weekly Schedule</h1>
                 <div className="flex flex-col lg:flex-row gap-15 p-2 lg:gap-0 bg-[#131313]">
-                    {days.map(day => <ScheduleDayColumn day={day} classSchedule={classSchedule.value} />)}
+                    {days.map(day => <ScheduleDayColumn day={day} classSchedule={classSchedule.value} classPages={classPages} />)}
                 </div>
             </section>
         </section>

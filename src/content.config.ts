@@ -12,6 +12,7 @@ const classes = defineCollection({
         title: z.string(),
         description: z.string(),
         excerpt: z.string(),
+        metaDescription: z.string().optional(),
         featuredImage: image(),
         classImageDesktop: image(),
         classImageMobile: image(),
@@ -33,6 +34,7 @@ const coaches = defineCollection({
         bio: z.string(),
         discipline: z.string(),
         excerpt: z.string(),
+        metaDescription: z.string().optional(),
         headshotImagePath: image().optional(),
         featuredImagePath: image(),
 

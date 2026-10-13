@@ -4,7 +4,6 @@ import { getCollection, getEntries } from "astro:content";
 import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import Layout from "../../layouts/Layout.astro";
 import CTAForm from "../../components/CTAForm.astro";
-import CTAPrimary from "../../components/CTAPrimary.astro";
 import CoachCard from "../../components/coaches/CoachCard.astro";
 import { breadcrumbs, gymId, membershipsId } from "../../lib/schema";
 
@@ -18,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const {classItem } = Astro.props;
-const { title, excerpt, description, featuredImage, classImageDesktop, classImageMobile, schedulePattern } = classItem.data;
+const { title, excerpt, metaDescription, description, featuredImage, classImageDesktop, classImageMobile, schedulePattern } = classItem.data;
 const coaches = classItem.data.coaches ? await getEntries(classItem.data.coaches) : [];
 
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -59,7 +58,7 @@ const schema = [
 ];
 ---
 
-<Layout title={`${title} Classes in Portland, OR | Harbinger MMA`} description={excerpt} schema={schema} image={featuredImage}>
+<Layout title={`${title} Classes in Portland, OR | Harbinger MMA`} description={metaDescription ?? excerpt} schema={schema} image={featuredImage}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 w-full h-full aspect-[16/9] left-0">
@@ -129,30 +128,5 @@ const schema = [
 			</div>
 		</section>
 	)}
-	<section class="px-6 pb-24 lg:px-24 grid lg:grid-cols-2 gap-12">
-		<div class="flex flex-col gap-6">
-			<div>
-				<h2 class={heading}>Your first class</h2>
-				<p class="text-neutral-1 leading-loose text-lg">
-					No previous experience is required. Sessions marked advanced or invite only are for experienced members.
-					Wear athletic clothes, like a moisture-wicking shirt and pocketless shorts or leggings, and check with your coach about gear.
-					Members must be 13 or older, and athletes under 18 need a parent or guardian to sign the
-					<a href="/minor-liability-waiver/" class="text-brand-primary underline">minor waiver</a>.
-					There's no trial class: send us your details and we'll reach out to book your first {title} class.
-				</p>
-			</div>
-			<div class="flex">
-				<CTAPrimary url="#claim-trial">book first class</CTAPrimary>
-			</div>
-		</div>
-		<div>
-			<h2 class={heading}>Pricing</h2>
-			<p class="text-neutral-1 leading-loose text-lg">
-				{title} is included in every membership, along with every other discipline we teach: $105 per month on month-to-month
-				(plus a one-time $75 initiation fee), $99 per month on a 3-month pass, or $18 for a day pass.
-				<a href="/pricing/" class="text-brand-primary underline">Compare memberships</a>.
-			</p>
-		</div>
-	</section>
 	<CTAForm />
 </Layout>

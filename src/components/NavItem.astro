@@ -5,6 +5,7 @@ interface Props {
   pageName: string;
   url: string;
   currentPath: string;
+  target?: string;
 }
 
 const { pageName, url, currentPath, ...props } = Astro.props;

@@ -1,7 +1,6 @@
 ---
 import NavLogo from "../assets/NavLogo.svg";
 import NavItem from "../components/NavItem.astro";
-import Link from "../components/Link.astro";
 
 const currentPath = Astro.url.pathname;
 ---
@@ -17,7 +16,7 @@ const currentPath = Astro.url.pathname;
       href="/"
       aria-label="Go to home page"
     >
-      <img src={NavLogo.src} alt="Harbinger MMA" width="150" height="50" class="w-[150px] h-[50px]" />
+      <img src={NavLogo.src} alt="Harbinger MMA" width="150" height="50" class="w-[150px] h-[50px] max-[359px]:w-[120px] max-[359px]:h-[40px]" />
     </a>
 
     <!-- Desktop navigation -->

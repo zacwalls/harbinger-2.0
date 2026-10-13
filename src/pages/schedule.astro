@@ -6,6 +6,14 @@ import { breadcrumbs } from '../lib/schema';
 
 const schedule = await getCollection('schedule')
 
+// Link each scheduled class to the first class page whose schedulePattern matches it
+const classes = await getCollection('classes')
+const classPages: Record<string, string> = {}
+for (const { data } of schedule) {
+    const match = classes.find((c) => c.data.schedulePattern && new RegExp(c.data.schedulePattern).test(data.className))
+    if (match) classPages[data.className] = `/classes/${match.id}/`
+}
+
 const schema = [
 	breadcrumbs(Astro.site!, [
 		{ name: "Home", path: "/" },
@@ -14,6 +22,6 @@ const schema = [
 ];
 ---
 
-<Layout schema={schema} title="Class Schedule | Harbinger MMA Portland" description="Check out our weekly schedule of classes and training sessions at Harbinger MMA.">
-    <WeeklySchedule client:load schedule={schedule} />
+<Layout schema={schema} title="Class Schedule | Harbinger MMA Portland" description="Weekly class schedule at Harbinger MMA in Portland: MMA, BJJ, Muay Thai, boxing, judo, wrestling, conditioning and yoga, seven days a week.">
+    <WeeklySchedule client:load schedule={schedule} classPages={classPages} />
 </Layout>

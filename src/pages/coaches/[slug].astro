@@ -15,7 +15,10 @@ export async function getStaticPaths() {
 }
 
 const { coach } = Astro.props;
-const { name, excerpt, bio, title, discipline, headshotImagePath, featuredImagePath } = coach.data;
+const { name, excerpt, metaDescription, bio, title, discipline, headshotImagePath, featuredImagePath } = coach.data;
+
+// Classes that list this coach in their `coaches` field
+const classes = (await getCollection("classes")).filter((c) => c.data.coaches?.some((ref) => ref.id === coach.id));
 
 const site = Astro.site!;
 const headshot = headshotImagePath && (await getImage({ src: headshotImagePath, format: "webp" }));
@@ -40,7 +43,7 @@ const schema = [
 ];
 ---
 
-<Layout title={`${name}, ${title} | Harbinger MMA Portland`} description={excerpt} schema={schema} image={featuredImagePath}>
+<Layout title={`${name}, ${title} | Harbinger MMA Portland`} description={metaDescription ?? excerpt} schema={schema} image={featuredImagePath}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 overflow-hidden">
@@ -73,6 +76,21 @@ const schema = [
 	<section class="px-6 py-24 lg:py-32 lg:px-24">
 		<h2 class="font-bold uppercase text-white text-3xl lg:text-4xl pb-8">meet <span class="text-brand-primary">{name}</span></h2>
 		<p class="text-neutral-1 leading-loose text-lg">{bio}</p>
+		{classes.length > 0 && (
+			<div class="flex flex-col gap-4 mt-12">
+				<h2 class="font-bold uppercase text-white text-2xl">{name} coaches</h2>
+				<ul class="flex flex-wrap gap-3">
+					{classes.map((c) => (
+						<li>
+							<a href={`/classes/${c.id}/`} class="inline-flex min-h-11 items-center border border-white/20 bg-neutral-3 px-5 text-neutral-2 uppercase tracking-[1.4px] hover:border-brand-primary">
+								{c.data.title} classes
+							</a>
+						</li>
+					))}
+				</ul>
+				<p class="text-neutral-1">See when they run on the <a href="/schedule/" class="text-brand-primary underline">weekly schedule</a>.</p>
+			</div>
+		)}
 	</section>
 	<CTAForm />
 </Layout>
