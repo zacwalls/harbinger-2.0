@@ -40,7 +40,7 @@ function ScheduleCard({ color, classItem, href }: { color: string, classItem: Cl
         <div className="flex flex-col bg-[#1C1B1B] px-3 py-8 gap-2 box-[outline]" style={`border-left: 4px solid ${color};`}>
             <p className="text-[10px] lg:text-[12px]" style={`color: ${color};`}>{classItem.startTime} - {classItem.endTime}</p>
             <p className="text-neutral-1 uppercase text-sm lg:text-base tracking-[0px] leading-[17.5px]">
-                {href ? <a href={href} className="underline decoration-white/30 underline-offset-4 hover:decoration-current">{classItem.className}</a> : classItem.className}
+                {href ? <a href={href}>{classItem.className}</a> : classItem.className}
             </p>
         </div>
     )
