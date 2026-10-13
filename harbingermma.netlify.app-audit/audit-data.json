@@ -1,0 +1,334 @@
+{
+  "summary": {
+    "health_score": 61,
+    "business_type": "Local Service (brick-and-mortar MMA gym, Portland OR)",
+    "audited_url": "https://harbingermma.netlify.app/",
+    "audit_date": "2026-10-12",
+    "stage": "pre-launch (harbingermma.com still on Webflow)",
+    "top_findings": [
+      "No redirects for old Webflow URLs at cutover",
+      "Apex vs www host mismatch",
+      "/classes/mma/ linked sitewide but returns 404",
+      "No privacy policy or waiver pages"
+    ],
+    "quick_wins": [
+      "Copy _redirects.proposed to public/_redirects",
+      "Reconcile footer hours with 6 AM classes; add openingHoursSpecification",
+      "Single H1 and a plain-text pricing sentence on /pricing/",
+      "Add Open Graph/Twitter tags with share image",
+      "Fix 'diciplines' typos and alt on schedule icons"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 61,
+      "what_works": [
+        "Static HTML, no JS rendering dependency",
+        "Single-hop trailing-slash 301s, real 404",
+        "Valid sitemap with 18 URLs",
+        "HSTS"
+      ],
+      "findings": [
+        {
+          "title": "No redirects for old Webflow URLs",
+          "severity": "Critical",
+          "description": "/about, /contact, /apply, /coaching, /class-types/*, /collections/*, /products/* and legal pages have no destination",
+          "recommendation": "Add public/_redirects (see _redirects.proposed); build legal pages at the same slugs"
+        },
+        {
+          "title": "Apex vs www mismatch",
+          "severity": "High",
+          "description": "Live domain 301s to www; new site canonicalizes to apex",
+          "recommendation": "Set apex as the Netlify primary domain; 301 www to apex; update GBP/GSC"
+        },
+        {
+          "title": "Broken /classes/mma/ link",
+          "severity": "High",
+          "description": "Footer link on every page returns 404",
+          "recommendation": "Add an MMA class page or remove the link"
+        },
+        {
+          "title": "Security headers",
+          "severity": "Medium",
+          "description": "Only HSTS present",
+          "recommendation": "Add public/_headers"
+        },
+        {
+          "title": "Netlify HUD script injected",
+          "severity": "Medium",
+          "description": "/.netlify/scripts/hud on every page",
+          "recommendation": "Disable in Netlify settings"
+        },
+        {
+          "title": "netlify.app copy indexable",
+          "severity": "Medium",
+          "description": "Build is production-mode before domain cutover",
+          "recommendation": "Do not add build-time noindex; verify netlify.app 301s to the primary domain after cutover"
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 50,
+      "what_works": [
+        "No duplicated body copy across pages",
+        "Coach bios contain real credentials"
+      ],
+      "findings": [
+        {
+          "title": "Thin class pages",
+          "severity": "High",
+          "description": "149-252 words of main copy; no times, coach, price",
+          "recommendation": "Expand to 600-900 words with Harbinger-specific details"
+        },
+        {
+          "title": "Unsupported superlatives, no proof",
+          "severity": "High",
+          "description": "'world class' x6, 'elite' x10; no reviews/press",
+          "recommendation": "Add reviews, KATU feature, affiliations, results"
+        },
+        {
+          "title": "Contradictions",
+          "severity": "Medium",
+          "description": "Hours vs 6 AM class; Youth card without program; '$99' stat",
+          "recommendation": "Reconcile facts sitewide"
+        },
+        {
+          "title": "No privacy policy",
+          "severity": "Medium",
+          "description": "Form collects name, email, phone",
+          "recommendation": "Publish /privacy-policy/"
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 56,
+      "what_works": [
+        "Unique titles with discipline + Portland"
+      ],
+      "findings": [
+        {
+          "title": "4 H1s on /pricing/",
+          "severity": "High",
+          "description": "Prices marked up as H1",
+          "recommendation": "Use styled paragraphs"
+        },
+        {
+          "title": "Generic homepage H1",
+          "severity": "Medium",
+          "description": "'here to win'",
+          "recommendation": "Include brand, discipline, Portland"
+        },
+        {
+          "title": "Meta description lengths",
+          "severity": "Medium",
+          "description": "9 under 110 chars, 3 over 160",
+          "recommendation": "Apply rewrites in findings/content.md"
+        },
+        {
+          "title": "No Open Graph/Twitter tags",
+          "severity": "Medium",
+          "description": "No og:* or twitter:* on any page",
+          "recommendation": "Add to Layout.astro with 1200x630 image"
+        },
+        {
+          "title": "Weak internal linking",
+          "severity": "Medium",
+          "description": "Class, coach and schedule pages don't cross-link",
+          "recommendation": "Add contextual links and breadcrumbs"
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 72,
+      "what_works": [
+        "@graph with ExerciseGym, WebSite, Person, Service, OfferCatalog, BreadcrumbList",
+        "NAP matches footer"
+      ],
+      "findings": [
+        {
+          "title": "Missing hours/geo/hasMap/logo",
+          "severity": "Medium",
+          "description": "ExerciseGym node lacks these",
+          "recommendation": "Add per findings/schema.md"
+        },
+        {
+          "title": "Duplicate #gym node on /pricing/",
+          "severity": "Medium",
+          "description": "Second partial ExerciseGym with same @id",
+          "recommendation": "Remove; restructure OfferCatalog"
+        },
+        {
+          "title": "Thin Service and Person nodes",
+          "severity": "Low",
+          "description": "Missing url, areaServed, @id",
+          "recommendation": "Enrich per findings/schema.md"
+        }
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 82,
+      "what_works": [
+        "CLS <= 0.006",
+        "TBT 0 ms",
+        "AVIF/WebP pipeline",
+        "Immutable /_astro assets"
+      ],
+      "findings": [
+        {
+          "title": "/coaches/ LCP 4.1 s",
+          "severity": "High",
+          "description": "2560w hero served to mobile",
+          "recommendation": "Fix sizes or add mobile source"
+        },
+        {
+          "title": "Homepage LCP 3.7 s",
+          "severity": "High",
+          "description": "Over-served card images (~274 KB)",
+          "recommendation": "Right-size srcset/sizes"
+        },
+        {
+          "title": "Render-blocking Google Fonts",
+          "severity": "Medium",
+          "description": "~0.8 s on throttled mobile",
+          "recommendation": "Self-host and preload Space Grotesk"
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 62,
+      "what_works": [
+        "Server-rendered content",
+        "All AI crawlers allowed",
+        "Native form, labeled controls"
+      ],
+      "findings": [
+        {
+          "title": "Pricing not citable as text",
+          "severity": "High",
+          "description": "Prices only in H1 fragments",
+          "recommendation": "Add a plain pricing sentence/FAQ"
+        },
+        {
+          "title": "Kids policy unanswerable",
+          "severity": "High",
+          "description": "Youth card without details",
+          "recommendation": "State youth program or minimum age"
+        },
+        {
+          "title": "Weak brand entity",
+          "severity": "Medium",
+          "description": "Brand ranks #6 for its own name; Bing confuses it",
+          "recommendation": "About page, consistent descriptions, sameAs"
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 75,
+      "what_works": [
+        "Modern formats with srcset",
+        "Correct empty alt on decorative images"
+      ],
+      "findings": [
+        {
+          "title": "Schedule icons missing alt",
+          "severity": "Medium",
+          "description": "6 img without alt on /schedule/",
+          "recommendation": "alt=\"\" in WeeklySchedule.tsx"
+        },
+        {
+          "title": "Hero served as JPG",
+          "severity": "Low",
+          "description": "LCP image not WebP/AVIF",
+          "recommendation": "Use Picture with avif/webp"
+        },
+        {
+          "title": "Heavy logo SVGs",
+          "severity": "Low",
+          "description": "NavLogo.svg 88 KB",
+          "recommendation": "Run SVGO"
+        }
+      ]
+    }
+  ],
+  "supplementary_scores": {
+    "local_seo": 52,
+    "sxo_gap": 48,
+    "visual_mobile": 78,
+    "agent_readiness": 88,
+    "sitemap": 74,
+    "backlinks": null
+  },
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 0: Launch blockers",
+        "timeframe": "Before DNS cutover",
+        "items": [
+          "Choose apex host in Netlify",
+          "Add public/_redirects",
+          "Build legal/waiver pages at same slugs",
+          "Fix Jerilyn bio",
+          "Fix /classes/mma/ 404",
+          "Reconcile hours",
+          "Disable Netlify HUD; add _headers"
+        ]
+      },
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Pricing clarity and single H1",
+          "First-class offer next to CTAs",
+          "Youth decision",
+          "Schema additions",
+          "Contact page with map",
+          "OG/Twitter tags",
+          "LCP fixes",
+          "Typos and alt text"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Deepen class pages",
+          "H1s and meta descriptions",
+          "Proof and reviews",
+          "Internal linking and breadcrumbs",
+          "Mobile CTA and tap targets"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "About page",
+          "GBP categories/hours/photos",
+          "Review generation",
+          "Citation cleanup"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Drift baseline at cutover",
+          "Weekly GSC checks for 6 weeks",
+          "Re-audit with Google API credentials"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/",
+    "redirects_proposal": "_redirects.proposed"
+  }
+}

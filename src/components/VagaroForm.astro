@@ -1,0 +1,29 @@
+---
+// Embeds a Vagaro form (waivers are signed in Vagaro, not on this site).
+interface Props {
+	title: string;
+	intro: string;
+	formUrl: string;
+}
+
+const { title, intro, formUrl } = Astro.props;
+---
+
+<section class="flex flex-col items-center px-6 py-24 gap-12">
+	<div class="flex flex-col justify-center items-center gap-3 max-w-2xl">
+		<p class="font-bold text-brand-secondary tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px]">forms</p>
+		<h1 class="text-neutral-2 uppercase font-bold text-4xl text-center">{title}</h1>
+		<p class="text-center leading-[26px] text-neutral-1">{intro}</p>
+	</div>
+	<iframe
+		src={formUrl}
+		title={title}
+		class="w-full max-w-3xl h-[900px] bg-white"
+		loading="lazy"
+	>
+		<a href={formUrl}>Open the {title} form</a>
+	</iframe>
+	<p class="text-sm text-neutral-1">
+		Form not loading? <a href={formUrl} target="_blank" rel="noopener" class="text-brand-primary underline">Open it in a new tab</a>.
+	</p>
+</section>

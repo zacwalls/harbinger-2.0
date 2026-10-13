@@ -1,0 +1,27 @@
+# Old Webflow URLs -> new site. Netlify treats /x and /x/ the same, so one rule
+# covers both. Rules without "!" never shadow a page that exists, so a rule can
+# stay after its destination page is built at the same path.
+# /home is handled by `redirects` in astro.config.mjs.
+
+# One host. astro.config.mjs uses the apex, so make the apex the primary domain in Netlify.
+https://www.harbingermma.com/*     https://harbingermma.com/:splat                   301!
+
+# Old Webflow pages
+/announcements/schedule-changes    /schedule/                                        301
+/class-types/all                   /classes/                                         301
+/class-types/bjj                   /classes/bjj/                                     301
+/class-types/conditioning          /classes/conditioning/                            301
+/class-types/striking              /classes/muay-thai/                               301
+/class-types/mma                   /classes/mma/                                     301
+# change to /classes/yoga/ once it exists
+/class-types/yoga                  /classes/                                         301
+/coaching                          /coaches/                                         301
+# superseded by an /about/ page if you build one
+/about                             /coaches/                                         301
+# superseded by a /contact/ page if you build one
+/contact                           /#claim-trial                                     301
+/apply                             /#claim-trial                                     301
+
+# Store lives on the Shopify subdomain; these paths exist there (verified 200 on 2026-10-12)
+/collections/*                     https://shop.harbingermma.com/collections/:splat  301
+/products/*                        https://shop.harbingermma.com/products/:splat     301
