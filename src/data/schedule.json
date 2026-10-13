@@ -7,7 +7,7 @@
             "striking"
         ],
         "startTime": "6:00 PM",
-        "endTime": "7:00 PM"
+        "endTime": "7:30 PM"
     },
     {
         "id": "1",
@@ -157,7 +157,7 @@
             "striking"
         ],
         "startTime": "7:00 PM",
-        "endTime": "8:00 PM"
+        "endTime": "8:30 PM"
     },
     {
         "id": "16",
@@ -522,5 +522,15 @@
         ],
         "startTime": "8:00 PM",
         "endTime": "9:00 PM"
+    },
+        {
+        "id": "52",
+        "className": "Strength & Conditioning",
+        "classDay": "Tuesday",
+        "classTypes": [
+            "conditioning"
+        ],
+        "startTime": "7:00 PM",
+        "endTime": "8:00 PM"
     }
 ]
