@@ -7,6 +7,13 @@ import sitemap from "@astrojs/sitemap"
 
 const isStaging = process.env.NODE_ENV === "staging"
 
+// Vagaro waiver pages: kept so old links still work, but not linked or listed in the sitemap
+const unlistedPages = [
+    "liability-waiver",
+    "minor-liability-waiver",
+    "minor-competition-release-waiver",
+]
+
 // https://astro.build/config
 export default defineConfig({
     output: "static",
@@ -27,7 +34,12 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
 
-    integrations: [preact(), sitemap()],
+    integrations: [
+        preact(),
+        sitemap({
+            filter: (page) => !unlistedPages.some((slug) => page.endsWith(`/${slug}/`)),
+        }),
+    ],
     adapter: netlify({
         imageCDN: false,
     }),
