@@ -3,6 +3,13 @@ import type { JSX } from "preact";
 
 type Status = "idle" | "sending" | "success" | "error";
 
+declare global {
+	interface Window {
+		// Set by GoogleAnalytics.astro on the production domain only
+		gtag?: (...args: unknown[]) => void;
+	}
+}
+
 const initialValues = {
 	name: "",
 	email: "",
@@ -47,6 +54,9 @@ export default function BookClassForm() {
 				body,
 			});
 			if (!res.ok) throw new Error(`Status ${res.status}`);
+
+			// Count the signup as a lead in Google Analytics. Never send the name, email or phone.
+			window.gtag?.("event", "generate_lead", { form_name: "trial-signup", interest: values.interest });
 
 			// Lock the card's size so it doesn't shrink when the content swaps
 			const rect = cardRef.current?.getBoundingClientRect();

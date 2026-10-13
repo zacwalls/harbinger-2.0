@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import { siteGraph } from "../lib/schema";
@@ -54,6 +55,7 @@ const jsonLd = {
 		<meta name="twitter:card" content="summary_large_image" />
 		{!isProduction ? <meta name="robots" content="noindex, nofollow" /> : noindex && <meta name="robots" content="noindex" />}
 		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+		<GoogleAnalytics />
 	</head>
 	<body>
 		<Nav />

@@ -1,0 +1,21 @@
+---
+// GA4 property, shared with the old Webflow site so reporting history carries over
+const measurementId = "G-6G6T1TEV0J";
+---
+
+<!-- Loads only on harbingermma.com, so staging, previews and localhost don't send data -->
+<script is:inline define:vars={{ measurementId }}>
+	if (location.hostname.endsWith("harbingermma.com")) {
+		window.dataLayer = window.dataLayer || [];
+		window.gtag = function () {
+			window.dataLayer.push(arguments);
+		};
+		window.gtag("js", new Date());
+		window.gtag("config", measurementId);
+
+		const script = document.createElement("script");
+		script.async = true;
+		script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+		document.head.appendChild(script);
+	}
+</script>
