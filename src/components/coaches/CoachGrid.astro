@@ -6,7 +6,7 @@ const { show } = Astro.props;
 const coaches = (await getCollection('coaches').then((coaches) => coaches.slice(0, show || coaches.length)));
 ---
 
-<div class="flex flex-wrap max-md:flex-col gap-8 justify-center">
+<div class="flex flex-wrap max-md:flex-col gap-8 justify-center min-w-0">
     {coaches.map((coach) => (
         <CoachCard
             slug={coach.id}

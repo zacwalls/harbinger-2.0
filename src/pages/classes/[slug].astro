@@ -5,6 +5,7 @@ import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import Layout from "../../layouts/Layout.astro";
 import CTAForm from "../../components/CTAForm.astro";
 import CoachCard from "../../components/coaches/CoachCard.astro";
+import { ScheduleGrid } from "../../components/WeeklySchedule.tsx";
 import { breadcrumbs, gymId, membershipsId } from "../../lib/schema";
 
 export async function getStaticPaths() {
@@ -20,18 +21,9 @@ const {classItem } = Astro.props;
 const { title, excerpt, metaDescription, description, featuredImage, classImageDesktop, classImageMobile, schedulePattern } = classItem.data;
 const coaches = classItem.data.coaches ? await getEntries(classItem.data.coaches) : [];
 
-const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const toMinutes = (time: string) => {
-	const [clock, period] = time.split(" ");
-	const [h, m] = clock.split(":").map(Number);
-	return ((h % 12) + (period === "PM" ? 12 : 0)) * 60 + m;
-};
 const pattern = schedulePattern && new RegExp(schedulePattern);
 const sessions = pattern
-	? (await getCollection("schedule"))
-			.map((entry) => entry.data)
-			.filter((session) => pattern.test(session.className))
-			.sort((a, b) => days.indexOf(a.classDay) - days.indexOf(b.classDay) || toMinutes(a.startTime) - toMinutes(b.startTime))
+	? (await getCollection("schedule")).filter((session) => pattern.test(session.data.className))
 	: [];
 
 const heading = "font-bold text-neutral-2 uppercase text-3xl lg:text-4xl mb-6";
@@ -92,24 +84,7 @@ const schema = [
 				{sessions.length} {sessions.length === 1 ? "session" : "sessions"} a week at our Portland gym.
 				See the <a href="/schedule/" class="text-brand-primary underline">full weekly schedule</a> for every class.
 			</p>
-			<table class="w-full max-w-3xl text-left text-neutral-1">
-				<thead>
-					<tr class="border-b border-white/10 text-[12px] tracking-[1.2px] uppercase text-brand-secondary">
-						<th scope="col" class="py-3 pr-4">Day</th>
-						<th scope="col" class="py-3 pr-4">Time</th>
-						<th scope="col" class="py-3">Class</th>
-					</tr>
-				</thead>
-				<tbody>
-					{sessions.map((session) => (
-						<tr class="border-b border-white/10">
-							<td class="py-3 pr-4 text-neutral-2">{session.classDay}</td>
-							<td class="py-3 pr-4 whitespace-nowrap">{session.startTime}–{session.endTime}</td>
-							<td class="py-3">{session.className}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
+			<ScheduleGrid schedule={sessions} />
 		</section>
 	)}
 	{coaches.length > 0 && (

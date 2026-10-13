@@ -4,7 +4,7 @@ import Link from '../../components/Link.astro';
 const { slug, name, title, excerpt, thumbnail } = Astro.props;
 ---
 
-<Link href={`coaches/${slug}/`} className="relative rounded-[12px] overflow-hidden border border-white/10 flex-shrink-0 w-[389px] h-[327px]">
+<Link href={`coaches/${slug}/`} className="relative rounded-[12px] overflow-hidden border border-white/10 flex-shrink-0 w-[389px] max-w-full aspect-[389/327]">
     <div class="absolute inset-0 overflow-hidden">
         {thumbnail && (
             <Image
@@ -17,7 +17,7 @@ const { slug, name, title, excerpt, thumbnail } = Astro.props;
             />
         )}
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-        <div class="absolute inset-px flex flex-col justify-end p-8">
+        <div class="absolute inset-px flex flex-col justify-end p-8 max-sm:p-6">
             <p class="font-bold text-[#e9c349] text-[12px] tracking-[1.2px] uppercase leading-[16px] mb-1">{title}</p>
             <h3 class="font-bold text-white text-[24px] uppercase leading-[32px]">{name}</h3>
             <div class="mt-2">

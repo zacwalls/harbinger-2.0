@@ -99,13 +99,22 @@ function toMinutes(timeStr: string) {
     return hours * 60 + minutes;
 }
 
+export function ScheduleGrid({ schedule, classPages = {} }: { schedule: ClassSchedule[], classPages?: Record<string, string> }) {
+    const sortedSchedule = [...schedule].sort((a, b) => toMinutes(a.data.endTime) - toMinutes(b.data.endTime))
+
+    return (
+        <div className="flex flex-col lg:flex-row gap-15 p-2 lg:gap-0 bg-[#131313]">
+            {days.map(day => <ScheduleDayColumn day={day} classSchedule={sortedSchedule} classPages={classPages} />)}
+        </div>
+    )
+}
+
 export default function WeeklySchedule({ schedule, classPages = {} }: { schedule: ClassSchedule[], classPages?: Record<string, string> }) {
     const classSchedule = useSignal(schedule);
     const selectedFilter: Signal<FilterOptionNames> = useSignal('all')
 
     effect(() => {
         classSchedule.value = filterSchedule(schedule, selectedFilter.value)
-        .sort((a, b) => toMinutes(a.data.endTime) - toMinutes(b.data.endTime))
     })
 
     return (
@@ -120,9 +129,7 @@ export default function WeeklySchedule({ schedule, classPages = {} }: { schedule
             </section>
             <section className="flex flex-col justify-center gap-16 px-4 py-20 w-full">
                 <h1 className="text-neutral-1 bg-color-black uppercase font-bold text-4xl text-center">Current Weekly Schedule</h1>
-                <div className="flex flex-col lg:flex-row gap-15 p-2 lg:gap-0 bg-[#131313]">
-                    {days.map(day => <ScheduleDayColumn day={day} classSchedule={classSchedule.value} classPages={classPages} />)}
-                </div>
+                <ScheduleGrid schedule={classSchedule.value} classPages={classPages} />
             </section>
         </section>
     );
