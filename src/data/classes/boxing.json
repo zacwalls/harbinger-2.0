@@ -4,5 +4,7 @@
     "excerpt": "Build fast, technical striking through classic fundamentals and high-intensity training.",
     "featuredImage": "../../assets/classes/boxing-featured.jpeg",
     "classImageDesktop": "../../assets/classes/boxing-banner-desktop.jpeg",
-    "classImageMobile": "../../assets/classes/boxing-banner-mobile.jpeg"
+    "classImageMobile": "../../assets/classes/boxing-banner-mobile.jpeg",
+    "schedulePattern": "\\bBoxing\\b",
+    "coaches": ["jake"]
 }

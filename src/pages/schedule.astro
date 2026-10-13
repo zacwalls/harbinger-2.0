@@ -2,10 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import WeeklySchedule from '../components/WeeklySchedule.tsx';
 import { getCollection } from 'astro:content';
+import { breadcrumbs } from '../lib/schema';
 
 const schedule = await getCollection('schedule')
+
+const schema = [
+	breadcrumbs(Astro.site!, [
+		{ name: "Home", path: "/" },
+		{ name: "Schedule", path: "/schedule/" },
+	]),
+];
 ---
 
-<Layout title="Class Schedule | Harbinger MMA Portland" description="Check out our weekly schedule of classes and training sessions at Harbinger MMA.">
+<Layout schema={schema} title="Class Schedule | Harbinger MMA Portland" description="Check out our weekly schedule of classes and training sessions at Harbinger MMA.">
     <WeeklySchedule client:load schedule={schedule} />
 </Layout>

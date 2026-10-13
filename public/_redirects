@@ -18,9 +18,7 @@ https://www.harbingermma.com/*     https://harbingermma.com/:splat              
 /coaching                          /coaches/                                         301
 # superseded by an /about/ page if you build one
 /about                             /coaches/                                         301
-# superseded by a /contact/ page if you build one
-/contact                           /#claim-trial                                     301
-/apply                             /#claim-trial                                     301
+/apply                             /contact/                                         301
 
 # Store lives on the Shopify subdomain; these paths exist there (verified 200 on 2026-10-12)
 /collections/*                     https://shop.harbingermma.com/collections/:splat  301

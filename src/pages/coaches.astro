@@ -5,19 +5,29 @@ import { Picture } from "astro:assets";
 import HeroImage from "/src/assets/coaches-hero-bg.jpg";
 import CoachGrid from "../components/coaches/CoachGrid.astro";
 import CTAForm from "../components/CTAForm.astro";
+import { breadcrumbs } from "../lib/schema";
+
+const schema = [
+	breadcrumbs(Astro.site!, [
+		{ name: "Home", path: "/" },
+		{ name: "Coaches", path: "/coaches/" },
+	]),
+];
 ---
 
-<Layout title="MMA & Martial Arts Coaches in Portland | Harbinger MMA" description="Meet our team of elite martial artists and coaches who bring decades of professional experience to the mats.">
+<Layout schema={schema} title="MMA & Martial Arts Coaches in Portland | Harbinger MMA" description="Meet our team of elite martial artists and coaches who bring decades of professional experience to the mats.">
 	<section
 		class="relative flex items-start justify-left py-20 overflow-hidden">
 		<div class="absolute inset-0 overflow-hidden">
+			{/* Phones show a 1279px-wide crop of this dimmed background; the 720px hint picks the 1280w file instead of the 1920w one. */}
 			<Picture
 				alt=""
 				class="absolute w-[120%] h-[140%] max-md:h-[115%] max-sm:w-[1279px] max-sm:h-auto top-[-17%] left-[-13%] max-sm:left-[calc(-1279px*.57)] max-md:left-[-13%] max-w-none opacity-80"
 				src={HeroImage}
-				widths={[1280, 1920, 2560]}
-				sizes="(max-width: 639px) 1279px, 120vw"
+				widths={[960, 1280, 1920]}
+				sizes="(max-width: 639px) 720px, 120vw"
 				formats={["avif", "webp"]}
+				quality={50}
 				priority
 			/>
 		</div>

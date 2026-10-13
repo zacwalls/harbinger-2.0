@@ -53,6 +53,12 @@ const currentPath = Astro.url.pathname;
       />
 
       <NavItem
+        url="/contact/"
+        pageName="Contact"
+        currentPath={currentPath}
+      />
+
+      <NavItem
         url="https://shop.harbingermma.com"
         pageName="Shop"
         currentPath={currentPath}
@@ -157,6 +163,14 @@ const currentPath = Astro.url.pathname;
         <NavItem
           url="/pricing/"
           pageName="Pricing"
+          currentPath={currentPath}
+        />
+      </div>
+
+      <div class="border-b border-white/10 py-3">
+        <NavItem
+          url="/contact/"
+          pageName="Contact"
           currentPath={currentPath}
         />
       </div>

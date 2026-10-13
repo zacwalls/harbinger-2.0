@@ -14,7 +14,10 @@ const classes = defineCollection({
         excerpt: z.string(),
         featuredImage: image(),
         classImageDesktop: image(),
-        classImageMobile: image()
+        classImageMobile: image(),
+        // Regex matched against schedule className to list this class's sessions
+        schedulePattern: z.string().optional(),
+        coaches: z.array(reference('coaches')).optional(),
     }),
 })
 

@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { coach } = Astro.props;
-const { name, excerpt, bio, title, discipline, headshotImagePath } = coach.data;
+const { name, excerpt, bio, title, discipline, headshotImagePath, featuredImagePath } = coach.data;
 
 const site = Astro.site!;
 const headshot = headshotImagePath && (await getImage({ src: headshotImagePath, format: "webp" }));
@@ -40,7 +40,7 @@ const schema = [
 ];
 ---
 
-<Layout title={`${name}, ${title} | Harbinger MMA Portland`} description={excerpt} schema={schema}>
+<Layout title={`${name}, ${title} | Harbinger MMA Portland`} description={excerpt} schema={schema} image={featuredImagePath}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 overflow-hidden">

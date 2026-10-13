@@ -11,11 +11,11 @@ const { slug, name, excerpt, thumbnail } = Astro.props;
         class="absolute w-full h-full object-cover"
         width={450}
         height={450}
-        widths={[450, 768, 900]}
-        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+        widths={[400, 640, 800]}
+        sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, calc(100vw - 48px)"
         src={thumbnail}
         format="webp"
-        quality="high"
+        quality={70}
       />
     )}
   </div>

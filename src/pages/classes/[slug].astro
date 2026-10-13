@@ -1,10 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntries } from "astro:content";
 
 import ResponsiveImage from '../../components/ResponsiveImage.astro'
 import Layout from "../../layouts/Layout.astro";
 import CTAForm from "../../components/CTAForm.astro";
-import { breadcrumbs, gymId } from "../../lib/schema";
+import CTAPrimary from "../../components/CTAPrimary.astro";
+import CoachCard from "../../components/coaches/CoachCard.astro";
+import { breadcrumbs, gymId, membershipsId } from "../../lib/schema";
 
 export async function getStaticPaths() {
 	const classes = await getCollection("classes");
@@ -16,16 +18,38 @@ export async function getStaticPaths() {
 }
 
 const {classItem } = Astro.props;
-const { title, excerpt, description, classImageDesktop, classImageMobile } = classItem.data;
+const { title, excerpt, description, featuredImage, classImageDesktop, classImageMobile, schedulePattern } = classItem.data;
+const coaches = classItem.data.coaches ? await getEntries(classItem.data.coaches) : [];
+
+const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const toMinutes = (time: string) => {
+	const [clock, period] = time.split(" ");
+	const [h, m] = clock.split(":").map(Number);
+	return ((h % 12) + (period === "PM" ? 12 : 0)) * 60 + m;
+};
+const pattern = schedulePattern && new RegExp(schedulePattern);
+const sessions = pattern
+	? (await getCollection("schedule"))
+			.map((entry) => entry.data)
+			.filter((session) => pattern.test(session.className))
+			.sort((a, b) => days.indexOf(a.classDay) - days.indexOf(b.classDay) || toMinutes(a.startTime) - toMinutes(b.startTime))
+	: [];
+
+const heading = "font-bold text-neutral-2 uppercase text-3xl lg:text-4xl mb-6";
 
 const site = Astro.site!;
+const pageUrl = new URL(`/classes/${classItem.id}/`, site).href;
 const schema = [
 	{
 		"@type": "Service",
+		"@id": `${pageUrl}#service`,
+		url: pageUrl,
 		name: title,
-		serviceType: title,
+		serviceType: `${title} classes`,
 		description: excerpt,
 		provider: { "@id": gymId(site) },
+		areaServed: { "@type": "City", name: "Portland" },
+		offers: { "@id": membershipsId(site) },
 	},
 	breadcrumbs(site, [
 		{ name: "Home", path: "/" },
@@ -35,7 +59,7 @@ const schema = [
 ];
 ---
 
-<Layout title={`${title} Classes in Portland, OR | Harbinger MMA`} description={excerpt} schema={schema}>
+<Layout title={`${title} Classes in Portland, OR | Harbinger MMA`} description={excerpt} schema={schema} image={featuredImage}>
 	<section
 		class="relative flex items-end justify-left min-h-[600px] lg:min-h-[700px] lg:py-32 lg:px-24 overflow-hidden">
 		<div class="absolute inset-0 w-full h-full aspect-[16/9] left-0">
@@ -59,7 +83,76 @@ const schema = [
 		</div>
 	</section>
 	<section class="px-6 py-24 lg:py-32 lg:px-24">
+		<h2 class={heading}>About {title}</h2>
 		<p class="text-neutral-1 leading-loose text-lg whitespace-pre-line">{description}</p>
+	</section>
+	{sessions.length > 0 && (
+		<section class="px-6 pb-24 lg:px-24">
+			<h2 class={heading}>{title} class times</h2>
+			<p class="text-neutral-1 leading-loose text-lg mb-6">
+				{sessions.length} {sessions.length === 1 ? "session" : "sessions"} a week at our Portland gym.
+				See the <a href="/schedule/" class="text-brand-primary underline">full weekly schedule</a> for every class.
+			</p>
+			<table class="w-full max-w-3xl text-left text-neutral-1">
+				<thead>
+					<tr class="border-b border-white/10 text-[12px] tracking-[1.2px] uppercase text-brand-secondary">
+						<th scope="col" class="py-3 pr-4">Day</th>
+						<th scope="col" class="py-3 pr-4">Time</th>
+						<th scope="col" class="py-3">Class</th>
+					</tr>
+				</thead>
+				<tbody>
+					{sessions.map((session) => (
+						<tr class="border-b border-white/10">
+							<td class="py-3 pr-4 text-neutral-2">{session.classDay}</td>
+							<td class="py-3 pr-4 whitespace-nowrap">{session.startTime}–{session.endTime}</td>
+							<td class="py-3">{session.className}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</section>
+	)}
+	{coaches.length > 0 && (
+		<section class="px-6 pb-24 lg:px-24">
+			<h2 class={heading}>{title} coaches</h2>
+			<div class="flex flex-wrap max-md:flex-col gap-8">
+				{coaches.map((coach) => (
+					<CoachCard
+						slug={coach.id}
+						name={coach.data.name}
+						title={coach.data.title}
+						excerpt={coach.data.excerpt}
+						thumbnail={coach.data.featuredImagePath}
+					/>
+				))}
+			</div>
+		</section>
+	)}
+	<section class="px-6 pb-24 lg:px-24 grid lg:grid-cols-2 gap-12">
+		<div class="flex flex-col gap-6">
+			<div>
+				<h2 class={heading}>Your first class</h2>
+				<p class="text-neutral-1 leading-loose text-lg">
+					No previous experience is required. Sessions marked advanced or invite only are for experienced members.
+					Wear athletic clothes, like a moisture-wicking shirt and pocketless shorts or leggings, and check with your coach about gear.
+					Members must be 13 or older, and athletes under 18 need a parent or guardian to sign the
+					<a href="/minor-liability-waiver/" class="text-brand-primary underline">minor waiver</a>.
+					There's no trial class: send us your details and we'll reach out to book your first {title} class.
+				</p>
+			</div>
+			<div class="flex">
+				<CTAPrimary url="#claim-trial">book first class</CTAPrimary>
+			</div>
+		</div>
+		<div>
+			<h2 class={heading}>Pricing</h2>
+			<p class="text-neutral-1 leading-loose text-lg">
+				{title} is included in every membership, along with every other discipline we teach: $105 per month on month-to-month
+				(plus a one-time $75 initiation fee), $99 per month on a 3-month pass, or $18 for a day pass.
+				<a href="/pricing/" class="text-brand-primary underline">Compare memberships</a>.
+			</p>
+		</div>
 	</section>
 	<CTAForm />
 </Layout>

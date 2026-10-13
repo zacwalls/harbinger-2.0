@@ -200,7 +200,7 @@ export default function BookClassForm() {
 					</div>
 
 					<p class="text-[#c0c7d1] text-[10px] tracking-[1px] uppercase text-center leading-[15px] px-4">
-						By submitting, you agree to receive communications regarding your trial.
+						By submitting, you agree to be contacted about booking your first class. See our <a href="/privacy-policy/" class="underline">privacy policy</a>.
 					</p>
 				</form>
 			)}

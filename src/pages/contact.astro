@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTAForm from "../components/CTAForm.astro";
+import CTAPrimary from "../components/CTAPrimary.astro";
+import CTASecondary from "../components/CTASecondary.astro";
+import { breadcrumbs } from "../lib/schema";
+import { hours, formatTime } from "../data/hours";
+import { directionsUrl, googleProfileUrl, mapEmbedUrl, mapsUrl } from "../data/location";
+
+const schema = [
+	breadcrumbs(Astro.site!, [
+		{ name: "Home", path: "/" },
+		{ name: "Contact", path: "/contact/" },
+	]),
+];
+
+const heading = "text-[12px] tracking-[1.2px] uppercase text-brand-secondary font-bold";
+---
+
+<Layout schema={schema} title="Contact & Location | Harbinger MMA Portland" description="Visit Harbinger MMA at 2626 S Corbett Ave in Portland, OR. Call (503) 310-5001, email contact@harbingermma.com, or check our hours and get directions.">
+	<section class="flex flex-col items-center px-6 py-24 gap-12">
+		<div class="flex flex-col justify-center items-center gap-3">
+			<p class="font-bold text-brand-secondary tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px]">visit us</p>
+			<h1 class="text-neutral-2 uppercase font-bold text-4xl text-center">contact & location</h1>
+		</div>
+		<div class="grid lg:grid-cols-2 gap-8 w-full max-w-[1232px]">
+			<div class="flex flex-col gap-8 bg-neutral-3 border border-white/10 p-8 text-neutral-1">
+				<div class="flex flex-col gap-2">
+					<h2 class={heading}>Address</h2>
+					<a href={mapsUrl} target="_blank" rel="noopener" class="text-neutral-2 text-xl leading-8 hover:underline">
+						2626 S Corbett Ave<br />Portland, OR 97201
+					</a>
+				</div>
+				<div class="grid sm:grid-cols-2 gap-8">
+					<div class="flex flex-col gap-2">
+						<h2 class={heading}>Phone</h2>
+						<a href="tel:5033105001" class="text-neutral-2 text-xl hover:underline">(503) 310-5001</a>
+					</div>
+					<div class="flex flex-col gap-2">
+						<h2 class={heading}>Email</h2>
+						<a href="mailto:contact@harbingermma.com" class="text-neutral-2 text-xl break-all hover:underline">contact@harbingermma.com</a>
+					</div>
+				</div>
+				<div class="flex flex-col gap-2">
+					<h2 class={heading}>Hours</h2>
+					<dl class="grid grid-cols-[auto_auto] justify-start gap-x-6 gap-y-2 text-neutral-2">
+						{hours.map(({ label, opens, closes }) => (
+							<>
+								<dt>{label}</dt>
+								<dd>{formatTime(opens)}-{formatTime(closes)}</dd>
+							</>
+						))}
+					</dl>
+					<p class="text-sm">Class times vary by day. See the <a href="/schedule/" class="text-brand-primary underline">weekly schedule</a>.</p>
+				</div>
+				<div class="flex flex-col gap-2">
+					<h2 class={heading}>Age policy</h2>
+					<p class="leading-[26px]">
+						Members must be 13 or older. Teens train in our regular classes, and a parent or guardian signs the
+						<a href="/minor-liability-waiver/" class="text-brand-primary underline">minor liability waiver</a> before their first class.
+					</p>
+				</div>
+				<div class="flex flex-col gap-4 mt-auto">
+					<CTAPrimary url={directionsUrl} target="_blank" rel="noopener">get directions</CTAPrimary>
+					<CTASecondary url={googleProfileUrl} target="_blank" rel="noopener">see us on google</CTASecondary>
+				</div>
+			</div>
+			<iframe
+				src={mapEmbedUrl}
+				title="Map showing Harbinger MMA at 2626 S Corbett Ave, Portland"
+				class="w-full min-h-[420px] h-full border border-white/10"
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
+		</div>
+	</section>
+	<CTAForm />
+</Layout>

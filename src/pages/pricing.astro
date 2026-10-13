@@ -4,38 +4,50 @@ import CTAForm from "../components/CTAForm.astro";
 import Checkmark from "../assets/icons/checkmark.svg";
 import CTAPrimary from "../components/CTAPrimary.astro";
 import CTASecondary from "../components/CTASecondary.astro";
-import { gymId } from "../lib/schema";
+import { breadcrumbs, gymId, membershipsId } from "../lib/schema";
 
-const initiationFee = { "@type": "PriceSpecification", name: "Initiation fee", price: 75, priceCurrency: "USD" };
+const site = Astro.site!;
+const pricingUrl = new URL("/pricing/", site).href;
+const fee = "Plus a one-time $75 initiation fee.";
 
-const offer = (name: string, description: string, price: number, unitCode: string, extraSpecs: object[] = []) => ({
+const offer = (name: string, description: string, price: number, months: number | null) => ({
 	"@type": "Offer",
 	name,
 	description,
-	priceSpecification: [{ "@type": "UnitPriceSpecification", price, priceCurrency: "USD", unitCode }, ...extraSpecs],
+	url: pricingUrl,
+	price,
+	priceCurrency: "USD",
+	priceSpecification: {
+		"@type": "UnitPriceSpecification",
+		price,
+		priceCurrency: "USD",
+		referenceQuantity: months
+			? { "@type": "QuantitativeValue", value: months, unitCode: "MON" }
+			: { "@type": "QuantitativeValue", value: 1, unitCode: "DAY" },
+	},
+	seller: { "@id": gymId(site) },
 });
 
 const schema = [
 	{
-		"@type": "ExerciseGym",
-		"@id": gymId(Astro.site!),
-		hasOfferCatalog: {
-			"@type": "OfferCatalog",
-			name: "Memberships",
-			itemListElement: [
-				offer("Month-to-Month", "Unlimited access with no long-term commitment.", 105, "MON", [initiationFee]),
-				offer("3-Month Pass", "The best-value option for consistent training. $297 total for 3 months.", 99, "MON", [
-					{ "@type": "PriceSpecification", name: "3-month total", price: 297, priceCurrency: "USD" },
-					initiationFee,
-				]),
-				offer("Day Pass", "A flexible one-day option for visitors and drop-ins.", 18, "DAY"),
-			],
-		},
+		"@type": "OfferCatalog",
+		"@id": membershipsId(site),
+		name: "Memberships",
+		url: pricingUrl,
+		itemListElement: [
+			offer("Month-to-Month", `Unlimited access with no long-term commitment. ${fee}`, 105, 1),
+			offer("3-Month Pass", "The best-value option for consistent training: $297 for 3 months ($99/month). No initiation fee.", 297, 3),
+			offer("Day Pass", "A flexible one-day option for visitors and drop-ins.", 18, null),
+		],
 	},
+	breadcrumbs(site, [
+		{ name: "Home", path: "/" },
+		{ name: "Pricing", path: "/pricing/" },
+	]),
 ];
 ---
 
-<Layout title="Membership Pricing | Harbinger MMA Portland" schema={schema} description="Harbinger MMA offers flexible membership options to suit your training needs. Choose from month-to-month, 3-month pass, or day pass options, all with access to elite coaching and world-class facilities.">
+<Layout title="Membership Pricing | Harbinger MMA Portland" schema={schema} description="Harbinger MMA memberships in Portland: $105/month with no contract, $99/month on a 3-month pass, or an $18 day pass. Unlimited classes, every discipline.">
 	<section class="flex flex-col px-6 py-24 gap-6 lg:gap-12">
 		<div class="flex flex-col justify-center items-center gap-3">
 			<p class="font-bold text-brand-secondary tracking-[5.6px] max-lg:tracking-[3.6px] uppercase text-[14px] max-lg:text-[8px] [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)]">memberships</p>
@@ -49,8 +61,7 @@ const schema = [
 					<p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">Unlimited access with no long-term commitment.</p>
 				</div>
 				<div class="flex flex-col gap-2 border-b-1 border-b-[#FFFFFF10] pb-5">
-					<h1 class="text-5xl text-white font-bold">$105<span class="text-xs font-normal text-[#8A919B]">/ month</span>
-					</h1>
+					<p class="text-5xl text-white font-bold">$105<span class="text-xs font-normal text-[#8A919B]"> / month</span></p>
 					<p class="text-sm font-bold text-brand-secondary">+ $75 one-time initiation fee</p>
 				</div>
 				<div class="flex flex-col flex-1 py-5 gap-3">
@@ -83,9 +94,9 @@ const schema = [
                         </p>
                     </div>
                     <div class="flex flex-col gap-2 border-b-1 border-b-[#FFFFFF10] pb-5">
-                        <h1 class="text-5xl text-white font-bold">$99<span class="text-xs font-normal text-[#8A919B]"> / month</span>
-                        </h1>
+                        <p class="text-5xl text-white font-bold">$99<span class="text-xs font-normal text-[#8A919B]"> / month</span></p>
                         <p class="text-base font-bold text-white">$297 total for 3 months</p>
+                        <p class="text-sm font-bold text-brand-secondary">No initiation fee</p>
                     </div>
                     <div class="flex flex-col flex-1 py-5 gap-3">
                         <div class="flex items-center gap-2">
@@ -113,8 +124,7 @@ const schema = [
 					<h3 class="text-2xl font-bold uppercase text-neutral-2">day pass</h3>
 					<p class="text-normal leading-[26px] tracking-0 [text-shadow:0px_4px_4px_rgba(0,0,0,0.8)] text-neutral-1">A flexible one-day option for visitors and drop-ins.</p>
 				</div>
-				<h1 class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$18<span class="text-xs font-normal text-[#8A919B]">/ day</span>
-				</h1>
+				<p class="text-5xl text-white font-bold border-b-1 border-b-[#FFFFFF10] pb-5">$18<span class="text-xs font-normal text-[#8A919B]"> / day</span></p>
 				<div class="flex flex-col flex-1 py-5 gap-3">
 					<div class="flex items-center gap-2">
 						<Checkmark class="fill-brand-secondary" />
@@ -136,6 +146,11 @@ const schema = [
 				<CTASecondary url="#claim-trial">book first class</CTASecondary>
 			</div>
 		</div>
+		<p class="max-w-3xl mx-auto text-center leading-[26px] text-neutral-1">
+			Month-to-month membership is $105 per month plus a one-time $75 initiation fee, with no long-term contract. The 3-month pass is $297,
+			which works out to $99 per month, with no initiation fee. Both include unlimited classes in every discipline. A day pass is $18 for one full day of access.
+			There's no trial class: send us your details below and we'll reach out to book your first class.
+		</p>
 	</section>
 	<CTAForm />
 </Layout>
