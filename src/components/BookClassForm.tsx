@@ -201,6 +201,7 @@ export default function BookClassForm() {
 								<option value="wrestling" class="bg-[#1c1b1b]">Wrestling</option>
 								<option value="mma" class="bg-[#1c1b1b]">MMA</option>
 								<option value="yoga" class="bg-[#1c1b1b]">Yoga</option>
+								<option value="strength-and-conditioning" class="bg-[#1c1b1b]">Strength & Conditioning</option>
 							</select>
 							<svg
 								class="absolute right-[17px] top-1/2 -translate-y-1/2 pointer-events-none"
