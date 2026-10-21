@@ -1,4 +1,4 @@
-import { useRef, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import type { JSX } from "preact";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -7,6 +7,8 @@ declare global {
 	interface Window {
 		// Set by GoogleAnalytics.astro on the production domain only
 		gtag?: (...args: unknown[]) => void;
+		// Set by CTAForm.astro when a pricing button is clicked
+		selectedPlan?: string;
 	}
 }
 
@@ -15,6 +17,8 @@ const initialValues = {
 	email: "",
 	phone: "",
 	interest: "muay-thai",
+	plan: "",
+	comments: "",
 	"bot-field": "",
 };
 
@@ -31,9 +35,20 @@ export default function BookClassForm() {
 	const [size, setSize] = useState<{ w: number; h: number } | null>(null);
 	const cardRef = useRef<HTMLDivElement>(null);
 
+	// Pick up a pricing button click, whether it happened before or after this form loaded
+	useEffect(() => {
+		const syncPlan = () => {
+			const plan = window.selectedPlan;
+			if (plan) setValues((prev) => ({ ...prev, plan }));
+		};
+		syncPlan();
+		window.addEventListener("plan-selected", syncPlan);
+		return () => window.removeEventListener("plan-selected", syncPlan);
+	}, []);
+
 	const update =
 		(field: keyof typeof initialValues) =>
-		(e: JSX.TargetedEvent<HTMLInputElement | HTMLSelectElement>) => {
+		(e: JSX.TargetedEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
 			const value = e.currentTarget.value;
 			setValues((prev) => ({ ...prev, [field]: value }));
 		};
@@ -105,6 +120,8 @@ export default function BookClassForm() {
 					onSubmit={handleSubmit}
 					class="flex flex-col gap-6">
 					<input type="hidden" name="form-name" value="trial-signup" />
+					{/* Pricing button the visitor clicked, if any (month-to-month, 3-month-pass or day-pass) */}
+					<input type="hidden" name="plan" value={values.plan} />
 
 					{/* Honeypot */}
 					<p hidden>
@@ -134,35 +151,38 @@ export default function BookClassForm() {
 						</div>
 					</div>
 
-					<div class={fieldWrap}>
-						<label for="trial-email" class={labelClass}>Email Address</label>
-						<div class={inputBox}>
-							<input
-								id="trial-email"
-								type="email"
-								name="email"
-								required
-								placeholder="email@domain.com"
-								value={values.email}
-								onInput={update("email")}
-								class={inputClass}
-							/>
+					{/* Email and phone share a row on wider screens to keep the card short */}
+					<div class="grid md:grid-cols-2 gap-x-4 gap-y-6">
+						<div class={`${fieldWrap} min-w-0`}>
+							<label for="trial-email" class={labelClass}>Email Address</label>
+							<div class={inputBox}>
+								<input
+									id="trial-email"
+									type="email"
+									name="email"
+									required
+									placeholder="email@domain.com"
+									value={values.email}
+									onInput={update("email")}
+									class={inputClass}
+								/>
+							</div>
 						</div>
-					</div>
 
-					<div class={fieldWrap}>
-						<label for="trial-phone" class={labelClass}>Phone Number</label>
-						<div class={inputBox}>
-							<input
-								id="trial-phone"
-								type="tel"
-								name="phone"
-								required
-								placeholder="555-555-5555"
-								value={values.phone}
-								onInput={update("phone")}
-								class={inputClass}
-							/>
+						<div class={`${fieldWrap} min-w-0`}>
+							<label for="trial-phone" class={labelClass}>Phone Number</label>
+							<div class={inputBox}>
+								<input
+									id="trial-phone"
+									type="tel"
+									name="phone"
+									required
+									placeholder="555-555-5555"
+									value={values.phone}
+									onInput={update("phone")}
+									class={inputClass}
+								/>
+							</div>
 						</div>
 					</div>
 
@@ -191,6 +211,21 @@ export default function BookClassForm() {
 								aria-hidden="true">
 								<path d="M1 1.5L6 6.5L11 1.5" stroke="#c0c7d1" stroke-width="2" />
 							</svg>
+						</div>
+					</div>
+
+					<div class={fieldWrap}>
+						<label for="trial-comments" class={labelClass}>Comments (Optional)</label>
+						<div class={inputBox}>
+							<textarea
+								id="trial-comments"
+								name="comments"
+								rows={2}
+								placeholder="Experience, injuries, questions..."
+								value={values.comments}
+								onInput={update("comments")}
+								class={`${inputClass} block resize-none field-sizing-content min-h-[84px] max-h-[180px]`}
+							/>
 						</div>
 					</div>
 
