@@ -45,3 +45,14 @@ import TrialForm from "./BookClassForm";
 		<TrialForm client:visible />
 	</div>
 </section>
+
+<script>
+	// Pricing buttons carry data-plan. Remember the last one clicked so the form can show it,
+	// since the form only loads once it scrolls into view and would miss the click itself.
+	document.addEventListener("click", (event) => {
+		const plan = (event.target as Element).closest<HTMLElement>("[data-plan]")?.dataset.plan;
+		if (!plan) return;
+		window.selectedPlan = plan;
+		window.dispatchEvent(new Event("plan-selected"));
+	});
+</script>
