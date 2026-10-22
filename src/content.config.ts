@@ -66,6 +66,8 @@ const schedule = defineCollection({
                 "yoga"
             ])
         ),
+        // Shows an "Invite only" badge on the schedule
+        inviteOnly: z.boolean().default(false),
     }),
 })
 

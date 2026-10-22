@@ -42,6 +42,11 @@ function ScheduleCard({ color, classItem, href }: { color: string, classItem: Cl
             <p className="text-neutral-1 uppercase text-sm lg:text-base tracking-[0px] leading-[17.5px]">
                 {href ? <a href={href}>{classItem.className}</a> : classItem.className}
             </p>
+            {classItem.inviteOnly && (
+                <span className="self-start mt-1 px-2 py-1 text-[#131313] text-[9px] lg:text-[10px] font-bold uppercase tracking-[1.2px] leading-none whitespace-nowrap" style={`background-color: ${color};`}>
+                    Invite only
+                </span>
+            )}
         </div>
     )
 }
